@@ -1,7 +1,7 @@
 # Alcance del proyecto
 
 ### De qué trata este proyecto
-Es una aplicación para conocer a otras personas y conseguir tener una cita con ellas.   
+MeetGrid una aplicación para conocer a otras personas y conseguir tener una cita con ellas.   
 
 
 Esta aplicación permitirá registrarse a los usuarios indicando su email (key), nombre de usuario (puede haber repetidos), contraseña, edad, sexo (hombre, mujer y no binario), estatura (cm, no obligatorio), peso (kg, no obligatorio), si tiene hijos (y cuántos, no obligatorio), situación amorosa (seleccionable entre soltero/a y en una relación), localidad (obligatorio), fecha de creación del perfil (autogenerado) y un campo de texto para que el usuario escriba libremente sobre sí mismo (gustos, hobbies, qué busca en la aplicación...). También podrán modificar su usuario una vez creado.

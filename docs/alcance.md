@@ -13,10 +13,10 @@ Al logarse, la aplicación mostrará vistas en base de las coincidencias de bús
 Así mismo, habrá un filtro de búsqueda para afinar los resultados teniendo en cuenta todos los campos menos el campo de texto "Sobre tí".
 
 
-La aplicación también registra el número de visitas a tu perfil.
+La aplicación también registra el número de favoritos que se le ha dado a un perfil en el campo de BD "popularidad" a través del cual se podrá filtrar.
 
 
-Se podrá enviar mensajes a personas que aparezcan en tus vistas, bloquear a otros usuarios libremente y no aparecerán ya en esta vista ni podrán enviarte mensajes y tener usuarios favoritos que aparecerán los primeros en tus vistas.
+Se podrá enviar mensajes a personas que aparezcan en tus vistas, bloquear a otros usuarios libremente y no aparecerán ya en esta vista ni podrán enviarte mensajes, reportar usuarios al superusuario y tener usuarios favoritos que aparecerán los primeros en tus vistas.
 
 ### Tareas que mi proyecto llevará a cabo
 
@@ -28,4 +28,5 @@ Se podrá enviar mensajes a personas que aparezcan en tus vistas, bloquear a otr
 - Permite definir el sexo de las personas sobre el que se tiene interés y tener vistas de perfiles según él.
 - Hacer búsquedas de perfiles con filtros y reflejar cambios en la vista. 
 - Bloqueo de otros usuarios.
-- Creación de listado de usuarios favoritos.
+- Creación de listado de usuarios favoritos y guardado de relacion de favoritos que tiene cada usuario.
+-Reporte al superusuario de perfiles por infracción de las normas para su revisión.

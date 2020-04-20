@@ -111,8 +111,8 @@ Los colores de la aplicación serán blanco para los fondos, negro para el conte
 ## EFECTOS JAVASCRIPT
 En principio están planeados los siguientes elementos a nivel de cliente:
 
-*Control de formularios con regex, efectos hover y cambios de color según comprobaciones en métodos.
+* Control de formularios con regex, efectos hover y cambios de color según comprobaciones en métodos.
 
-*Animaciones para transmisión entre páginas. (MÍNIMA, casi imperceptible)
+* Animaciones para transmisión entre páginas. (MÍNIMA, casi imperceptible)
 
-*Tema oscuro, que jugará con las clases boostrap para convertir elementos blancos en negros y viceversa.
+* Tema oscuro, que jugará con las clases boostrap para convertir elementos blancos en negros y viceversa.

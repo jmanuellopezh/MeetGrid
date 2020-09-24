@@ -111,8 +111,12 @@ Los colores de la aplicación serán blanco para los fondos, negro para el conte
 ## EFECTOS JAVASCRIPT
 En principio están planeados los siguientes elementos a nivel de cliente:
 
+* Pop-up cookies al entrar en el login.
+
+* Pop-up medidas preventivas COVID-19 al iniciar sesión y acceder al grid.
+
 * Control de formularios con regex, efectos hover y cambios de color según comprobaciones en métodos.
 
 * Animaciones para transmisión entre páginas. (MÍNIMA, casi imperceptible)
 
-* Tema oscuro, que jugará con las clases boostrap para convertir elementos blancos en negros y viceversa.
+* (Posible, aún en consideración) Tema oscuro, que jugará con las clases boostrap para convertir elementos blancos en negros y viceversa.

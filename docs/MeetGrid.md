@@ -15,7 +15,7 @@ FAVORITE (**id**, owner, user)
 
 BLOCK (**id**, owner, user)
 
-REPORT (**id**, owner, reported, content)
+REPORT (**id**, owner, reported, motive)
 
 >Las ID están marcadas en negrita.
 

@@ -7,7 +7,7 @@ A continuación se detallan los requisitos técnicos para el funcionamiento de e
 
 Aquí detallamos las diferentes tablas de nuestra BD, así como sus campos. Más aclaraciones abajo.
 
-USER (**email**, password, role, age, gender, area, pic, description)
+USER (**id**, email (clave candidata), password, role, age, gender, area, pic, description)
 
 MESSAGE (**id**, sender, receiver, content, date)
 
@@ -17,9 +17,9 @@ BLOCK (**id**, owner, user)
 
 REPORT (**id**, owner, reported, motive)
 
->Las ID están marcadas en negrita.
+>Las claves están marcadas en negrita.
 
->Todas las tablas tienen una id long autogenerada menos USER, que es el email que introduce el usuario.
+>Todas las tablas tienen una id long autogenerada.
 
 ## Mapa del sitio
 

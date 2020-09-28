@@ -11,9 +11,9 @@ USER (**id**, email (clave candidata), password, role, age, gender, area, pic, d
 
 MESSAGE (**id**, sender, receiver, content, date)
 
-FAVORITE (**id**, owner, user)
+FAVORITE (**id**, owner, favorited)
 
-BLOCK (**id**, owner, user)
+BLOCK (**id**, owner, blocked)
 
 REPORT (**id**, owner, reported, motive)
 

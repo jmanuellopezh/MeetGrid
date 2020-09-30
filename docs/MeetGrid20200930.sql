@@ -153,7 +153,7 @@ CREATE TABLE `user` (
   `age` int(11) DEFAULT NULL,
   `gender` varchar(1) DEFAULT NULL,
   `area` varchar(45) DEFAULT NULL,
-  `pic` blob,
+  `pic` varchar(100) DEFAULT NULL,
   `description` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -177,4 +177,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-09-30 19:50:06
+-- Dump completed on 2020-09-30 20:28:38

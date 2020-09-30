@@ -7,7 +7,9 @@ A continuación se detallan los requisitos técnicos para el funcionamiento de e
 
 Aquí detallamos las diferentes tablas de nuestra BD, así como sus campos. Más aclaraciones abajo.
 
-USER (**id**, email (clave candidata), password, role, age, gender, area, pic, description)
+USER (**id**, email (clave candidata), password, name, age, gender, area, pic, description)
+
+ROLE (**id**, type)
 
 MESSAGE (**id**, sender, receiver, content, date)
 

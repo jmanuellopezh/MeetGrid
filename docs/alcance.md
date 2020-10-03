@@ -10,7 +10,7 @@ Esta aplicación permitirá registrarse a los usuarios indicando su email (key c
 Al logarse, aparecerá un pop up con recomendaciones para tener citas respetando las medidas contra la COVID-19 y llegaremos a la pantalla central de la aplicación, una rejilla de perfiles. Habrá un filtro de búsqueda para afinar los resultados según edad, zona y género.
 
 
-Se podrá enviar mensajes a personas que aparezcan en tus vistas, bloquear a otros usuarios libremente y no aparecerán ya en esta vista ni podrán enviarte mensajes, reportar usuarios al superusuario y tener usuarios favoritos que aparecerán los primeros en tus vistas.
+Se podrá enviar mensajes a personas que aparezcan en tus vistas, bloquear a otros usuarios libremente y podrán enviarte mensajes, reportar usuarios al superusuario y tener usuarios favoritos con su propia vista exenta de filtros.
 
 ### Tareas que mi proyecto llevará a cabo
 

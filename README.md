@@ -38,3 +38,13 @@ El ser humano es un animal social, necesitamos contacto con otras personas y nut
 /src : Aquí localizaremos el **código** de la aplicación. Desde el generado en JAVA dentro de una carpeta conteniendo el proyecto con el mismo nombre de la aplicación, como dumps de bases de datos para replicarla y hacerla funcionar.  
 
 /docs : Aquí se localizará toda la **documentación**. Tanto escrita como esquemática.
+  
+## Enlaces de interés  
+[Resumen de todos los requisitos técnicos](https://github.com/jmanuellopezh/MeetGrid/blob/master/docs/MeetGrid.md)
+[Alcance de la aplicación](https://github.com/jmanuellopezh/MeetGrid/blob/master/docs/alcance.md)
+[Carpeta JAVA del proyecto Eclipse](https://github.com/jmanuellopezh/MeetGrid/tree/master/src/MeetGrid)
+[Dump de la BD en SQL](https://github.com/jmanuellopezh/MeetGrid/blob/master/src/MeetGrid20201004.sql)
+[Esquema ER de la BD](https://github.com/jmanuellopezh/MeetGrid/blob/master/docs/EsquemaEntidadRelacion.png)
+[Esquema relacional de la BD](https://github.com/jmanuellopezh/MeetGrid/blob/master/docs/EsquemaRelacional.jpg)
+[Stack tecnológico](https://github.com/jmanuellopezh/MeetGrid/blob/master/docs/StackTecnologico.jpg)
+[Documento detallando los casos de uso más comunes](https://github.com/jmanuellopezh/MeetGrid/blob/master/docs/CasosDeUsoMeetGrid.pdf)

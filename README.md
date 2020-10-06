@@ -38,7 +38,7 @@ El ser humano es un animal social, necesitamos contacto con otras personas y nut
 
 ## Prototipo de la Interfaz del proyecto
 
-
+![Screenshot](https://github.com/jmanuellopezh/MeetGrid/blob/master/docs/pantallazoInterfaz.jpg) 
 
 ## Estructura del Proyecto
 

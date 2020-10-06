@@ -6,12 +6,13 @@
 #### Fecha de Inicio: 15-11-2019
 #### Fecha de Finalización: DD-MM-YYYY
 
-## Breve descripción del proyecto
+## Descripción del proyecto
 
 **MeetGrid** es una red social para conocer gente nueva y tener la posibilidad de tener una cita con ellas. Su objetivo es la sencillez, dar control total al usuario y cuidar su privacidad. Habrá una pantalla principal para los usuarios en forma de rejilla donde sólo con un vistazo, sin deslizar, sin esperar, y mediante unos sencillos filtros podrás ver sólo a quien te interesa.
+También dispondrá de perfiles Superusuario que velarán por esta seguridad y privacidad de los usuarios dándoles a éstos herramientas como el bloqueo o el reporte.
 
-## Definir el objetivo de la aplicación
-**Tener una gran idea** o encontrar un punto del mercado al que no se esté dando un producto o servicio es el punto de partida en cada nuevo proyecto. Antes de comenzar debes **definir claramente el propósito y la misión de la aplicación web**:
+## Objetivo de la aplicación
+Hay muchas otras aplicaciones que ofrecen algo similar, pero ninguna estas dos cosas a la vez: su público es cualquier orientación sexual y el control sobre los perfiles a visualizar es absoluto al usuario.
 
 - **¿Qué va a hacer la aplicación?**
 El eje principal son la visualización de otros usuarios y los mensajes que se envían entre ellos. Previamente podrás ver un perfil que cada persona podrá rellenar a su gusto y modificar libremente.
@@ -28,8 +29,5 @@ El ser humano es un animal social, necesitamos contacto con otras personas y nut
 
 ## Estructura del Proyecto
 
-En este apartado el alumno explicará el contenido del repositorio y de todas las carpetas relevantes del mismo.
-
-## Demostración del proyecto
-
-Vídeo demostrativo que contenga una pequeña demostración de la apariencia del proyecto y de aquello que el proyecto puede hacer. (No más de 2 minutos).
+/src : Aquí localizaremos el **código** de la aplicación. Desde el generado en JAVA dentro de una carpeta conteniendo el proyecto con el mismo nombre de la aplicación, como dumps de bases de datos para replicarla y hacerla funcionar.
+/docs : Aquí se localizará toda la **documentación**. Tanto escrita como esquemática.

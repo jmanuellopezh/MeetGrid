@@ -30,7 +30,7 @@
               <a class="nav-link" href="#">Mensajes</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Favoritos</a>
+              <a class="nav-link" href="Favorite">Favoritos</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Ajustes de perfil</a>
@@ -43,7 +43,8 @@
       </nav>
 
 <%  HttpServletRequest httpRequest = (HttpServletRequest) request;
-			String gridURI = httpRequest.getContextPath() + "/ReadUsersByFilter"; %>
+			String gridURI = httpRequest.getContextPath() + "/ReadUsersByFilter";
+			String profileURI = httpRequest.getContextPath() + "/ReadUserById";%>
 
       <!--barra con los filtros-->
       <nav class="navbar navbar-expand-lg navbar-light bg-light ">
@@ -131,14 +132,14 @@
       </nav>
 
       <!--grid de perfiles-->
-      
+      <div class="row ml-3 mr-3 pt-4">
 	<%
     
 		List<User> li = (List<User>) session.getAttribute("lista");
         if(null!=li){
 		for (User u : li) {%>
 		
-		<div class="row ml-3 mr-3 pt-4">
+		
         <div class="card col-lg-2 col-sm-6">
 
           <div class="image">
@@ -150,13 +151,21 @@
             <p class="card-text">Edad: <%=u.getAge() %></p>
             <p class="card-text"><small class="text-muted">Provincia: <%=u.getArea() %></small></p>
           </div>
+          
+          <form class="d-flex justify-content-center" method = "get" action=<%=profileURI %>>
+			
+			<input type="hidden" name="id" value ="<%=u.getId() %>"/>
+			
+			<input class="btn btn-danger mb-2 mx-auto" type="submit" value="Ver Perfil"/>
+	</form>
         </div>
         
         <%
 		}
     }
 		%>
-		
+
+	</div>	
 
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

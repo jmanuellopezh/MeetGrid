@@ -19,6 +19,30 @@ public class User {
 		this.description = description;
 	}
 
+
+
+	public User(String email, String password, String name, String role, String age, String gender, String area,
+			String pic, String description) {
+		super();
+		this.email = email;
+		this.password = password;
+		this.name = name;
+		this.role = role;
+		this.age = age;
+		this.gender = gender;
+		this.area = area;
+		this.pic = pic;
+		this.description = description;
+	}
+
+
+
+	public User() {
+		super();
+	}
+
+
+
 	public String getId() {
 		return id;
 	}
@@ -97,6 +121,23 @@ public class User {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	
+	public String getGenderFull() {
+		String genderfull = null;
+		switch (this.gender) {
+		
+		case "M":
+			genderfull = ("Mujer");
+			break;
+		case "H":
+			genderfull = ("Hombre");
+			break;
+		case "N":
+			genderfull = ("No binario");
+			
+		}
+		return genderfull;
 	}
 
 	@Override

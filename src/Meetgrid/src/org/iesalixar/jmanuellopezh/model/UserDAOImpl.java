@@ -137,6 +137,26 @@ public class UserDAOImpl implements UserDAO {
 		return found;
 	}
 	
+	//DEVUELVE SI UN USUARIO YA EXISTE O NO, EVALUANDO EL EMAIL
+
+		public boolean checkExistingFavorite(String owner, String favorited) {
+
+			boolean found = false;
+			Connection c = ConnectionDB.conectarMySQL();
+			try {
+				PreparedStatement stmt = c
+						.prepareStatement("select * from favorite where owner=? and favorited=?");
+				stmt.setString(1, owner);
+				stmt.setString(2, favorited);
+				ResultSet rs = stmt.executeQuery();
+				found = rs.next();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+			return found;
+		}
+	
 	//LEE LOS USUARIOS SEGÚN EL FILTRO DEL GRID
 		public List<User> readByFilter(String gender, String area, String min, String max, String id) {
 
@@ -163,5 +183,130 @@ public class UserDAOImpl implements UserDAO {
 
 			return users;
 		}
+		
+				
+				
+				//LEE LOS DATOS DE UN USUARIO EN CONCRETO, EL QUE SE LE PASA EL id POR PARAMETRO
+				public User readUserById(String id) {
+					Connection c = ConnectionDB.conectarMySQL();
+					User user = null;
+					try {
+						PreparedStatement stmt = c.prepareStatement("select * from user where id=?");
+						stmt.setString(1, id);
+						
+						ResultSet rs = stmt.executeQuery();
+						while (rs.next())
+							user = new User(rs.getString("id"), rs.getString("email"),rs.getString("password"),rs.getString("role"),rs.getString("name"),rs.getString("age"),rs.getString("gender"),rs.getString("area"),rs.getString("pic"),rs.getString("description"));
+
+						rs.close();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+					System.out.println(user.toString());
+					return user;
+				}
+				
+				public void makeFavorite(String owner, String favorited) {
+					try {
+						Connection c = ConnectionDB.conectarMySQL();
+						PreparedStatement stmt = c.prepareStatement(
+								"INSERT INTO favorite (owner, favorited) VALUES ('" + owner + "','" + favorited +"')");
+
+						stmt.executeUpdate();
+
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+
+				}
+				
+				public List<User> readFavorites(String owner) {
+
+					List<User> users = null;
+					try {
+						Connection con = ConnectionDB.conectarMySQL();
+						Statement s = con.createStatement(); 
+						ResultSet rs = s.executeQuery("select * from user inner join favorite on user.id = favorite.favorited WHERE favorite.owner = '"+owner+"'");
+						users = new ArrayList<User>();
+
+						while (rs.next()) {
+							User u = new User(rs.getString("id"), rs.getString("email"),rs.getString("password"),rs.getString("role"),rs.getString("name"),rs.getString("age"),rs.getString("gender"),rs.getString("area"),rs.getString("pic"),rs.getString("description"));
+							users.add(u);
+							System.out.println(u.toString());
+						}
+						rs.close();
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					
+					
+
+					return users;
+				}
+				
+				public void report(String owner, String reported, String motive) {
+					try {
+						Connection c = ConnectionDB.conectarMySQL();
+						PreparedStatement stmt = c.prepareStatement(
+								"INSERT INTO report (owner, reported, motive, date) VALUES ('" + owner + "','" + reported + "','"+ motive +"', LOCALTIMESTAMP())");
+
+						stmt.executeUpdate();
+
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+
+				}
+				
+				public boolean checkExistingBlocked(String owner, String blocked) {
+
+					boolean found = false;
+					Connection c = ConnectionDB.conectarMySQL();
+					try {
+						PreparedStatement stmt = c
+								.prepareStatement("select * from block where owner=? and blocked=?");
+						stmt.setString(1, owner);
+						stmt.setString(2, blocked);
+						ResultSet rs = stmt.executeQuery();
+						found = rs.next();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+
+					return found;
+				}
+				
+				public void block(String owner, String blocked) {
+					try {
+						Connection c = ConnectionDB.conectarMySQL();
+						PreparedStatement stmt = c.prepareStatement(
+								"INSERT INTO block (owner, blocked) VALUES ('" + owner + "','" + blocked + "')");
+
+						stmt.executeUpdate();
+
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+
+				}
+				
+				public void deleteFavorite(String owner, String deleted) {
+					try{
+						Connection con = ConnectionDB.conectarMySQL();
+						Statement stmt = con.createStatement();
+						
+						boolean borrado = stmt.execute("DELETE FROM favorite WHERE owner ="+owner+" and favorited ="+deleted);
+						
+						if (borrado){
+							System.out.println("Favorito eliminado");
+						}
+						stmt.close();
+					}catch (SQLException ex){
+						System.out.println(ex);
+						
+					}
+					
+				}
 
 }

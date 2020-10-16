@@ -44,16 +44,13 @@ public class Login extends HttpServlet {
 			response.addCookie(ck);
 			session.setAttribute("Authorized", "yes");
 			session.setAttribute("username", email);
+			session.setAttribute("Id", user.checkId(email, password));
 			if (user.checkRole(email, password).equals("admin")) {
-				session.setAttribute("admin", email);
-				session.setAttribute("Id", user.checkId(email, password));//con esto saco la id del user para poder hacer visionado de solo sus juegos
 				logger.info("An admin has logged in");
 				response.sendRedirect("ReadGamesAdmin");
 			}else if (user.checkRole(email, password).equals("user")) {
-				session.setAttribute("user", email);
-				session.setAttribute("Id", user.checkId(email, password));//con esto saco la id del user para poder hacer visionado de solo sus juegos
 				logger.info("A user has logged in");
-				response.sendRedirect("user/grid.jsp");
+				response.sendRedirect("ReadUsersByFilter");
 			}else {
 				session.setAttribute("visitor", email);
 				logger.info("We have a visitor");

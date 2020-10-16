@@ -17,7 +17,7 @@ import org.iesalixar.jmanuellopezh.model.User;
 import org.iesalixar.jmanuellopezh.model.UserDAOImpl;
 
 /**
- * Servlet implementation class ReadGamesUser
+ * Servlet implementation class ReadUsersByFilter
  */
 @WebServlet("/ReadUsersByFilter")
 public class ReadUsersByFilter extends HttpServlet {
@@ -34,7 +34,7 @@ public class ReadUsersByFilter extends HttpServlet {
     
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	try {
-		logger.info("'ReadGamesByFilter' has been invoked!");
+		logger.info("'ReadUsersByFilter' has been invoked!");
 		String min = request.getParameter("min");
 		String max = request.getParameter("max");
 		String area = request.getParameter("area");
@@ -58,5 +58,11 @@ public class ReadUsersByFilter extends HttpServlet {
 		e.printStackTrace();
 	}
     }
+    
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	RequestDispatcher rd=request.getRequestDispatcher("user/grid.jsp");  
+		  
+		rd.forward(request, response);//method may be include or forward 
+	}
 
 }

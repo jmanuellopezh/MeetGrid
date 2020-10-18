@@ -55,3 +55,7 @@ El ser humano es un animal social, necesitamos contacto con otras personas y nut
 [Stack tecnológico](https://github.com/jmanuellopezh/MeetGrid/blob/master/docs/StackTecnologico.jpg)  
 
 [Documento detallando los casos de uso más comunes](https://github.com/jmanuellopezh/MeetGrid/blob/master/docs/CasosDeUsoMeetGrid.pdf)
+
+[Wireframe en Axure](docs/MeetgridWireframe.rp)
+
+[Mockup en Axure](docs/MeetgridWireframe.rp)

@@ -56,6 +56,8 @@ El ser humano es un animal social, necesitamos contacto con otras personas y nut
 
 [Documento detallando los casos de uso más comunes](https://github.com/jmanuellopezh/MeetGrid/blob/master/docs/CasosDeUsoMeetGrid.pdf)
 
+[Documento detallando los diagramas de actividades](docs/DiagramasDeActividades.pdf)
+
 [Wireframe en Axure](docs/MeetgridWireframe.rp)
 
 [Mockup en Axure](docs/MeetgridWireframe.rp)

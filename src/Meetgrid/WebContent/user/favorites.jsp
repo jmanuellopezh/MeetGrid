@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <LINK REL=StyleSheet HREF="custom.css" TYPE="text/css" MEDIA=screen>
-    <title>MeetGrid</title>
+    <title>MeetGrid - Favoritos</title>
     <link rel="icon" type="image/png" href="img/logosmall.png">
 </head>
 <body>
@@ -17,25 +17,25 @@
     <!--header y barra de navegacion-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
         <img src="img/logosmall.png" width="40" height="40" class="d-inline-block align-top" alt="MeetGrid">
-        <a class="navbar-brand" href="#">MeetGrid</a>
+        <a class="navbar-brand" href="ReadUsersByFilter">MeetGrid</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarText">
           <ul class="navbar-nav mr-auto">
-            
+            <li class="nav-item">
               <a class="nav-link" href="ReadUsersByFilter">Perfiles</a>
             </li>
+            
             <li class="nav-item">
-              <a class="nav-link" href="#">Mensajes</a>
-            </li>
-            <li class="nav-item">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Favoritos<span class="sr-only">(current)</span></a>
+              <a class="nav-link active" href="Favorite">Favoritos</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Ajustes de perfil</a>
               </li>
+              <li class="nav-item">
+              <a class="nav-link" href="Logout">Cerrar sesión</a>
+            </li>
           </ul>
           <span class="navbar-text">
             Usuario: <%=session.getAttribute("username") %>
@@ -72,13 +72,13 @@ String deleteFavoriteURI = httpRequest.getContextPath() + "/DeleteFavorite";%>
 			
 			<input type="hidden" name="id" value ="<%=u.getId() %>"/>
 			
-			<input class="btn btn-danger mb-2 mx-auto" type="submit" value="Ver Perfil"/>
+			<input class="btn btn-danger mb-2 w-100" type="submit" value="Ver Perfil"/>
 	</form>
 	
 	<form method="post" action=<%=deleteFavoriteURI %>>
 	
 	<input type="hidden" name="deleted"  value="<%=u.getId() %>"/>
-	<input class="btn btn-danger mb-2 mx-auto" type="submit" value="Quitar favorito"/>
+	<input class="btn btn-outline-danger mb-2 w-100" type="submit" value="Quitar favorito"/>
 	</form>
         </div>
         

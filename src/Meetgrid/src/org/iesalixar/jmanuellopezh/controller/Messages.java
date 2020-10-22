@@ -43,13 +43,10 @@ public class Messages extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		String sender = (String)session.getAttribute("Id");
-		System.out.println(sender);
 		User receiverobj = (User) session.getAttribute("visit");
 		String receiver = receiverobj.getId();
-		System.out.println(receiver);
-		
-		MessageDAOImpl user = new MessageDAOImpl();
-		List<Message> lista = user.readMessages(sender, receiver);
+
+		List<Message> lista = MessageDAOImpl.readMessages(sender, receiver);
 		
 		
 		session.setAttribute("messages", lista);

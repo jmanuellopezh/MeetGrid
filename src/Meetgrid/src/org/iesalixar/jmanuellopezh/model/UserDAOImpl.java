@@ -245,19 +245,6 @@ public class UserDAOImpl implements UserDAO {
 					return users;
 				}
 				
-				public void report(String owner, String reported, String motive) {
-					try {
-						Connection c = ConnectionDB.conectarMySQL();
-						PreparedStatement stmt = c.prepareStatement(
-								"INSERT INTO report (owner, reported, motive, date) VALUES ('" + owner + "','" + reported + "','"+ motive +"', LOCALTIMESTAMP())");
-
-						stmt.executeUpdate();
-
-					} catch (SQLException e) {
-						e.printStackTrace();
-					}
-
-				}
 				
 				public boolean checkExistingBlocked(String owner, String blocked) {
 
@@ -308,5 +295,63 @@ public class UserDAOImpl implements UserDAO {
 					}
 					
 				}
+				
+				public static String getEmailById(String id) {
+					Connection c = ConnectionDB.conectarMySQL();
+					String email = null;
+					try {
+						PreparedStatement stmt = c.prepareStatement("select name from user where id=?");
+						stmt.setString(1, id);
+						
+						ResultSet rs = stmt.executeQuery();
+						while (rs.next())
+							email = rs.getString(1);
+
+						rs.close();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+					return email;
+					
+				}
+				
+				public void deleteUser(String id) {
+					try{
+						Connection con = ConnectionDB.conectarMySQL();
+						Statement stmt = con.createStatement();
+						
+						boolean borrado = stmt.execute("DELETE FROM user WHERE id ="+id);
+						
+						if (borrado){
+							System.out.println("Usuario eliminado por un admin.");
+						}
+						stmt.close();
+					}catch (SQLException ex){
+						System.out.println(ex);
+						
+					}
+					
+				}
+				
+				//en owner se mete el id del usuario visitado y en blocked el del que haya iniciado sesion
+				public static boolean checkBlocked(String owner, String blocked) {
+
+					boolean found = false;
+					Connection c = ConnectionDB.conectarMySQL();
+					try {
+						PreparedStatement stmt = c
+								.prepareStatement("select * from block where owner=? and blocked=?");
+						stmt.setString(1, owner);
+						stmt.setString(2, blocked);
+						ResultSet rs = stmt.executeQuery();
+						found = rs.next();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+
+					return found;
+				}
+				
+				
 
 }

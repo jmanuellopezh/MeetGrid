@@ -47,7 +47,7 @@ public class Login extends HttpServlet {
 			session.setAttribute("Id", user.checkId(email, password));
 			if (user.checkRole(email, password).equals("admin")) {
 				logger.info("An admin has logged in");
-				response.sendRedirect("ReadGamesAdmin");
+				response.sendRedirect("ReadReports");
 			}else if (user.checkRole(email, password).equals("user")) {
 				logger.info("A user has logged in");
 				response.sendRedirect("ReadUsersByFilter");

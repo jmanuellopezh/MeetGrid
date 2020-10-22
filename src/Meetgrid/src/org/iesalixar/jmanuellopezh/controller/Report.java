@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.iesalixar.jmanuellopezh.model.MessageDAOImpl;
+import org.iesalixar.jmanuellopezh.model.ReportDAOImpl;
 import org.iesalixar.jmanuellopezh.model.User;
 import org.iesalixar.jmanuellopezh.model.UserDAOImpl;
 
@@ -42,7 +43,7 @@ public class Report extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		UserDAOImpl u =new UserDAOImpl();
+		ReportDAOImpl u =new ReportDAOImpl();
 		doGet(request, response);
 		HttpSession session = request.getSession();
 		String owner = (String)session.getAttribute("Id");
@@ -51,7 +52,7 @@ public class Report extends HttpServlet {
 		String motive=request.getParameter("motive");
 		
 		u.report(owner, reported, motive);
-		response.sendRedirect("ReadUserById");
+		response.sendRedirect("user/report.jsp");
 			
 	}
 

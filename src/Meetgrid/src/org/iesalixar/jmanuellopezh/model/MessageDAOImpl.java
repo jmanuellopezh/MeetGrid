@@ -19,7 +19,7 @@ public class MessageDAOImpl {
 			try {
 				Connection con = ConnectionDB.conectarMySQL();
 				Statement s = con.createStatement();
-				ResultSet rs = s.executeQuery("select * from message where (sender = "+sender+" OR sender ="+receiver+") AND (receiver = "+receiver+" OR receiver="+sender+")"); 
+				ResultSet rs = s.executeQuery("select * from message where (sender = "+sender+" OR sender ="+receiver+") AND (receiver = "+receiver+" OR receiver="+sender+") ORDER BY date desc"); 
 				messages = new ArrayList<Message>();
 
 				while (rs.next()) {
@@ -35,16 +35,24 @@ public class MessageDAOImpl {
 		}
 		
 		public void create(String sender, String receiver, String content) {
+			
 			try {
+				
+				//metodo para que no se envie mensajes a usuarios que te han bloqueado
+				if(!UserDAOImpl.checkBlocked(receiver, sender)) {
 				Connection c = ConnectionDB.conectarMySQL();
 				PreparedStatement stmt = c.prepareStatement(
 						"INSERT INTO message (sender, receiver, content, date) VALUES ('" + sender + "','" + receiver + "','"+ content +"', LOCALTIMESTAMP())");
+				
 
 				stmt.executeUpdate();
+				}
 
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
+			
+			
 
 		}
 

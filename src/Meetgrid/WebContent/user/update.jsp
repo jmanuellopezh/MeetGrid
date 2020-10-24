@@ -1,70 +1,107 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-	
-	
+    pageEncoding="ISO-8859-1"%>
+<%@ page import="org.iesalixar.jmanuellopezh.model.User"%>
+<%@ page import="java.util.List"%>
+
 	<%@taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt"%>
 	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 	<%@page import="javax.servlet.http.HttpServletRequest" %>
 	<%@page import="javax.servlet.ServletRequest" %>
-	<fmt:setBundle basename="interface" />
+	
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-<LINK REL=StyleSheet HREF="custom.css" TYPE="text/css" MEDIA=screen>
-<meta charset="ISO-8859-1">
-<title>Meetgrid - Regístrate</title>
-<link rel="icon" type="image/png" href="img/logosmall.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <LINK REL=StyleSheet HREF="custom.css" TYPE="text/css" MEDIA=screen>
+    <title>MeetGrid - Mi perfil</title>
+    <link rel="icon" type="image/png" href="img/logosmall.png">
 </head>
 <body>
-	
-	 <!--header y barra de navegacion-->
+
+		<%  HttpServletRequest httpRequest = (HttpServletRequest) request;
+		String deleteURI = httpRequest.getContextPath() + "/DeleteUser";
+		String updateURI = httpRequest.getContextPath() + "/UpdateUser";%>
+
+<!--header y barra de navegacion-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
         <img src="img/logosmall.png" width="40" height="40" class="d-inline-block align-top" alt="MeetGrid">
-        <a class="navbar-brand" >MeetGrid</a>
+        <a class="navbar-brand" href="ReadUsersByFilter">MeetGrid</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarText">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link"><fmt:message key="login.welcome" /></a>
+            <li class="nav-item">
+              <a class="nav-link" href="ReadUsersByFilter">Perfiles </a>
             </li>
-
+            
+            <li class="nav-item">
+              <a class="nav-link" href="Favorite">Favoritos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="Block">Bloqueados</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="UpdateUser">Ajustes de perfil</a>
+              </li>
+              <li class="nav-item">
+              <a class="nav-link" href="Logout">Cerrar sesión</a>
+            </li>
           </ul>
           <span class="navbar-text">
-            <a href="<%=session.getServletContext().getContextPath()%>/login.jsp">Iniciar sesión</a>
+            Usuario: <%=session.getAttribute("username") %>
           </span>
         </div>
       </nav>
-      
-      <!-- fin del nav -->
+
+<% User u = (User) session.getAttribute("profile"); %>
+
+
+      <!--parte del perfil-->
+
       <div class="container">
+      <h3 class="mt-3">Datos actuales:</h3>
+        <div class="row mt-3 rounded border border-dark">
+
+                <img src="<%=u.getPic() %>" alt="<%=u.getName() %>" class="img img-responsive full-width mh-100 mt-2 ml-2 mb-2 rounded col-lg-5 col-m-4 col-sm-12" />
+
+                <div class="col-lg-6 col-m-5 col-sm-12">
+                    <h1><%=u.getName() %></h1>
+                    <cite><%=u.getArea() %></cite>
+                    <p><%=u.getGenderFull() %>, <%=u.getAge() %> años</p>
+                    <h5>Sobre mí:</h5>
+                    <p class="rounded border border-dark row ml-1 mr-1 mt-4 p-2 col-12">
+
+                        <%=u.getDescription() %>
+
+                    </p>
 
 
-				<!-- register -->
+                </div>
+
+        </div>
+        <!--MODIFICAR PERFIL-->
+        	<h3 class="mt-3">Modificar datos:</h3>
 			
-				<form class= "mt-3 rounded border border-dark form-row" action="./Register" method="post" id="form">
+				<form class= "mt-3 rounded border border-dark form-row" action=<%=updateURI %> method="post" id="form">
 					<fieldset class="col-12">
-						<label>Email</label>
-						<input class="form-control" type="text" name="email" id="email" required onblur="compruebaEmail()" placeholder="Formato email: usuario@dominio.com/es.org...">
+						
 						<label>Contraseña</label>
-						<input class="form-control" type="password" name="password" id="pass" required onblur="compruebaPass()" placeholder="Puede contener numeros y letras, min 6 max 10 caracteres. Una vez introduzca uno valido se generara el campo para repetir contraseña.">
+						<input class="form-control" type="password" name="password" id="pass" onblur="compruebaPass()" placeholder="Puede contener numeros y letras, min 6 max 10 caracteres. Una vez introduzca uno valido se generara el campo para repetir contraseña.">
 						<div id="otravez"></div>
 						
 						<label>Nombre de usuario</label>
-						<input class="form-control" type="text" name="name" id="usuario" required onblur="compruebaUsuario()" placeholder="Letras mayusculas, minusculas y numeros entre 1 y 15 caracteres">
+						<input class="form-control" type="text" name="name" id="usuario" onblur="compruebaUsuario()" placeholder="Letras mayusculas, minusculas y numeros entre 1 y 15 caracteres">
 						<label>Edad</label>
-						<input class="form-control" type="text" name="age" id="edad" required onblur="compruebaEdad()" placeholder="La edad debe ser mínimo 18 años, sólo se admiten números">
+						<input class="form-control" type="text" name="age" id="edad" onblur="compruebaEdad()" placeholder="La edad debe ser mínimo 18 años, sólo se admiten números">
 						
 						<div class="input-group mt-3">
 			                    <div class="input-group-prepend">
 			                      <label class="input-group-text" for="inputGroupSelect01">Género</label>
 			                    </div>
-			                    <select class="custom-select" id="inputGroupSelect01" name="gender" required>
+			                    <select class="custom-select" id="inputGroupSelect01" name="gender">
 			                      <option selected disabled>Selecciona...</option>
 			                      <option value="M">Mujer</option>
 			                      <option value="H">Hombre</option>
@@ -77,7 +114,7 @@
 			                    <div class="input-group-prepend">
 			                      <label class="input-group-text" for="inputGroupSelect01">Provincia</label>
 			                    </div>
-			                    <select class="custom-select" id="inputGroupSelect01" name="area" required>
+			                    <select class="custom-select" id="inputGroupSelect01" name="area">
 			                      <option selected disabled>Selecciona...</option>
 			                      <option value="Álava (Araba)">Álava (Araba)</option>
 			                      <option value="Albacete">Albacete</option>
@@ -138,11 +175,21 @@
 						
 						<label>Sobre mi:</label>
 						<textarea class="form-control" rows="10" type="text" name="description"></textarea>
+						<input type="hidden" name="id"  value="<%=u.getId() %>"/>
+						<button class="btn btn-danger col-12 col-m-6 col-lg-6 offset-m-3 offset-lg-3 mt-2 mb-2" type="submit" value="update">Modificar perfil</button>
 						
-						<button class="btn btn-danger col-12" onclick="compruebaTodo()" type="submit" value="register">Registrarse</button>
 					</fieldset>
 					
+					
+					
 				</form>
+				<form method="post" action=<%=deleteURI %> >
+	
+							<input type="hidden" name="deleted"  value="<%=u.getId() %>"/>
+							<input class="btn btn-outline-danger col-12 col-m-6 col-lg-6 offset-m-3 offset-lg-3 mt-2 mb-2" type="submit" value="Borrar perfil"/>
+				</form>
+				
+				
 
 	</div>
 </body>
@@ -150,19 +197,6 @@
 <script type="text/javascript">
 
 //funciones de verificacion de datos
-
-    function compruebaUsuario() {
-        expr = /^([A-Za-z0-9_]{1,15})$/;//si pide una longitud de usuario diferente recuerda cambiarla aqui
-        usuario = document.getElementById("usuario").value;
-        if (!expr.test(usuario) && usuario != "") {
-
-            document.getElementById("usuario").style.backgroundColor = "red";
-
-        }        
-        else if (expr.test(usuario)){
-            document.getElementById("usuario").style.backgroundColor = "lightgreen";
-        }
-    }
 
     function compruebaEmail() {
         expr = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
@@ -238,105 +272,6 @@
             document.getElementById("edad").style.backgroundColor = "lightgreen";
         }
     }
-
-    //FUNCIONES DE COMPROBACION DE REGEX CON MENSAJES AL DARLE AL BOTON
-
-    
-        //variable global que usare para guardar el primer error y hacer la animacion (TODO ESTO AL ENVIAR AL FINAL, NO EN ONBLUR)
-        var primerError='';
-    
-
-    function compruebaUsuarioFin() {
-        expr = /^([A-Za-z0-9_]{1,15})$/;//si pide una longitud de usuario diferente recuerda cambiarla aqui
-        usuario = document.getElementById("usuario").value;
-        if (!expr.test(usuario) && usuario != "") {
-            document.getElementById("usuario").value=("");
-
-            alert("Error: Nombre de usuario incorrecto. Son letras mayusculas, minusculas y numeros entre 1 y 15 caracteres");
-            if (primerError==''){
-                primerError="usuario";//GUARDO EL NOMBRE DE LA ETIQUETA
-            }
-        }
-        
-    }
-
-    function compruebaEmailFin() {
-        expr = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-        email = document.getElementById("email").value;
-        if (!expr.test(email) && email != "") {
-            document.getElementById("email").value=("");
-
-            alert("Error: La dirección de correo " + email + " es incorrecta.");
-            if (primerError==''){
-                primerError="email";//GUARDO EL NOMBRE DE LA ETIQUETA
-            }
-
-        } 
-        
-    }
-
-    function compruebaPassFin() {
-        expr = /^([a-zA-Z0-9]{6,10})+$/;
-        pass = document.getElementById("pass").value;
-        var existe = false;
-        if (!expr.test(pass) && pass != "") {
-            document.getElementById("pass").value=("");
-            alert("Error: El password " + pass + " es incorrecto. Puede contener numeros y letras, min 6 max 10 caracteres.");
-            existe =true;
-
-            if (primerError==''){
-                primerError="pass";//GUARDO EL NOMBRE DE LA ETIQUETA
-            }
-        }else if (expr.test(pass)){
-            existe =true;
-        }
-
-        return existe;
-    }
-
-    function compruebaPassOtraFin() {
-        expr = /^([a-zA-Z0-9]{6,10})+$/;
-        passotra = document.getElementById("passotra").value;
-        pass = document.getElementById("pass").value;
-        if (!expr.test(passotra) && passotra != "") {
-            document.getElementById("passotra").value=("");
-
-            alert("Error: El password " + passotra + " es incorrecto. Puede contener numeros y letras, min 6 max 10 caracteres y debe ser igual al indicado arriba.");
-            if (primerError==''){
-                primerError="passotra";//GUARDO EL NOMBRE DE LA ETIQUETA
-            }
-        } 
-        
-    }
-    
-    function compruebaEdadFin() {
-        expr = /^(1[89]|[2-9][0-9]|1([0-3][0-9]|40))$/;
-        usuario = document.getElementById("edad").value;
-        if (!expr.test(usuario) && usuario != "") {
-            document.getElementById("edad").value=("");
-
-            alert("Error: La edad debe ser mínimo 18 años, sólo se admiten números");
-            if (primerError==''){
-                primerError="edad";
-            }
-        }
-        
-    }
-
-    function compruebaTodo(){
-        compruebaUsuarioFin();
-        compruebaEmailFin();
-        compruebaEdadFin();
-
-        if (compruebaPassFin()){
-            compruebaPassOtraFin();
-        }
-       
-        
-        //con esta línea volvemos al primer error
-        document.getElementById(primerError).scrollIntoView({block: 'start', behavior: 'smooth'});
-    }
-
 
 </script>
 

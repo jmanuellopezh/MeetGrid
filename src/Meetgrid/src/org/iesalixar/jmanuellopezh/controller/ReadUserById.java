@@ -46,11 +46,7 @@ public class ReadUserById extends HttpServlet {
 
 	    HttpSession session = request.getSession();
 	    User u = user.readUserById(request.getParameter("id"));
-	    System.out.println(u.toString());
 
-	    
-	    
-	    
 	    //guardo el perfil visitado
 	    
 	    session.setAttribute("visit", u);

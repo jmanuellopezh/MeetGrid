@@ -45,6 +45,7 @@ public class Login extends HttpServlet {
 			session.setAttribute("Authorized", "yes");
 			session.setAttribute("username", email);
 			session.setAttribute("Id", user.checkId(email, password));
+			session.setAttribute("profile", user.readUserById(user.checkId(email, password)));//guardo el objeto entero del usuario para visualizacion de sus datos en su administracion de perfil
 			if (user.checkRole(email, password).equals("admin")) {
 				logger.info("An admin has logged in");
 				response.sendRedirect("ReadReports");
@@ -52,7 +53,6 @@ public class Login extends HttpServlet {
 				logger.info("A user has logged in");
 				response.sendRedirect("ReadUsersByFilter");
 			}else {
-				session.setAttribute("visitor", email);
 				logger.info("We have a visitor");
 				response.sendRedirect("register.jsp");
 			}

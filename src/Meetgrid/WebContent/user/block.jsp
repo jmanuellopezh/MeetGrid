@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <LINK REL=StyleSheet HREF="custom.css" TYPE="text/css" MEDIA=screen>
-    <title>MeetGrid - Favoritos</title>
+    <title>MeetGrid - Bloqueados</title>
     <link rel="icon" type="image/png" href="img/logosmall.png">
 </head>
 <body>
@@ -28,10 +28,10 @@
             </li>
             
             <li class="nav-item">
-              <a class="nav-link active" href="Favorite">Favoritos</a>
+              <a class="nav-link " href="Favorite">Favoritos</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="Block">Bloqueados</a>
+              <a class="nav-link active" href="Block">Bloqueados</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="UpdateUser">Ajustes de perfil</a>
@@ -48,13 +48,16 @@
 
 <%  HttpServletRequest httpRequest = (HttpServletRequest) request;
 			String profileURI = httpRequest.getContextPath() + "/ReadUserById";
-String deleteFavoriteURI = httpRequest.getContextPath() + "/DeleteFavorite";%>
+String deleteBlockURI = httpRequest.getContextPath() + "/DeleteBlock";%>
+      <div class="row  ml-lg-3 mr-lg-3 mt-2">
+      <div class="alert alert-danger col-12" role="alert"> <p class="text-center">El usuario bloqueado no podrá enviarte mensajes, si lo desbloqueas podrá hacerlo de nuevo. El sistema no notificará a estos usuarios de los bloqueos ni desbloqueos.</p></div>
+      </div>
       
       <!--grid de perfiles-->
-      <div class="row ml-3 mr-3 pt-4">
+      <div class="row ml-3 mr-3 pt-2">
 	<%
     
-		List<User> li = (List<User>) session.getAttribute("favorites");
+		List<User> li = (List<User>) session.getAttribute("blocks");
         if(null!=li){
 		for (User u : li) {%>
 		
@@ -78,10 +81,10 @@ String deleteFavoriteURI = httpRequest.getContextPath() + "/DeleteFavorite";%>
 			<input class="btn btn-danger mb-2 w-100" type="submit" value="Ver Perfil"/>
 	</form>
 	
-	<form method="post" action=<%=deleteFavoriteURI %>>
+	<form method="post" action=<%=deleteBlockURI %>>
 	
 	<input type="hidden" name="deleted"  value="<%=u.getId() %>"/>
-	<input class="btn btn-outline-danger mb-2 w-100" type="submit" value="Quitar favorito"/>
+	<input class="btn btn-outline-danger mb-2 w-100" type="submit" value="Desbloquear"/>
 	</form>
         </div>
         

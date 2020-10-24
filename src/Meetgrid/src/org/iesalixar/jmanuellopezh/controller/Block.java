@@ -1,6 +1,9 @@
 package org.iesalixar.jmanuellopezh.controller;
 
 import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -33,8 +36,21 @@ public class Block extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		logger.info("'Block' has been invoked!");
+		
+		HttpSession session = request.getSession();
+		String owner = (String)session.getAttribute("Id");
+		
+		
+		UserDAOImpl user = new UserDAOImpl();
+		List<User> lista = user.readBlocks(owner);
+		
+		
+		session.setAttribute("blocks", lista);
+	    
+	    RequestDispatcher rd=request.getRequestDispatcher("user/block.jsp");  
+		  
+		rd.forward(request, response);//method may be include or forward 
 	}
 
 	/**
@@ -59,7 +75,7 @@ public class Block extends HttpServlet {
 
 		}
 		
-		response.sendRedirect("ReadUsersByFilter");
+		response.sendRedirect("Block");
 		
 	}
 

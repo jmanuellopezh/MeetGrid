@@ -11,16 +11,16 @@ import javax.servlet.http.HttpSession;
 import org.iesalixar.jmanuellopezh.model.UserDAOImpl;
 
 /**
- * Servlet implementation class DeleteUser
+ * Servlet implementation class DeleteBlock
  */
-@WebServlet("/DeleteUser")
-public class DeleteUser extends HttpServlet {
+@WebServlet("/DeleteBlock")
+public class DeleteBlock extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DeleteUser() {
+    public DeleteBlock() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -39,11 +39,12 @@ public class DeleteUser extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		UserDAOImpl u =new UserDAOImpl();
 
-
-		String id=request.getParameter("deleted");
+		HttpSession session = request.getSession();
+		String owner = (String)session.getAttribute("Id");
+		String deleted=request.getParameter("deleted");
 		
-		u.deleteUser(id);
-		response.sendRedirect("Logout");
+		u.deleteBlock(owner, deleted);
+		response.sendRedirect("Block");
 	}
 
 }

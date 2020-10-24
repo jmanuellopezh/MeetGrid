@@ -34,7 +34,10 @@
               <a class="nav-link" href="Favorite">Favoritos</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Ajustes de perfil</a>
+              <a class="nav-link" href="Block">Bloqueados</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="UpdateUser">Ajustes de perfil</a>
               </li>
               <li class="nav-item">
               <a class="nav-link" href="Logout">Cerrar sesión</a>

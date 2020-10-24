@@ -137,7 +137,7 @@ public class UserDAOImpl implements UserDAO {
 		return found;
 	}
 	
-	//DEVUELVE SI UN USUARIO YA EXISTE O NO, EVALUANDO EL EMAIL
+	//DEVUELVE SI UN favorito YA EXISTE O NO, EVALUANDO EL EMAIL
 
 		public boolean checkExistingFavorite(String owner, String favorited) {
 
@@ -321,9 +321,10 @@ public class UserDAOImpl implements UserDAO {
 						Statement stmt = con.createStatement();
 						
 						boolean borrado = stmt.execute("DELETE FROM user WHERE id ="+id);
+						System.out.println("DELETE FROM user WHERE id ="+id);
 						
 						if (borrado){
-							System.out.println("Usuario eliminado por un admin.");
+							System.out.println("Usuario eliminado");
 						}
 						stmt.close();
 					}catch (SQLException ex){
@@ -350,6 +351,85 @@ public class UserDAOImpl implements UserDAO {
 					}
 
 					return found;
+				}
+				
+				public List<User> readBlocks(String owner) {
+
+					List<User> users = null;
+					try {
+						Connection con = ConnectionDB.conectarMySQL();
+						Statement s = con.createStatement(); 
+						ResultSet rs = s.executeQuery("select * from user inner join block on user.id = block.blocked WHERE block.owner = '"+owner+"'");
+						users = new ArrayList<User>();
+
+						while (rs.next()) {
+							User u = new User(rs.getString("id"), rs.getString("email"),rs.getString("password"),rs.getString("role"),rs.getString("name"),rs.getString("age"),rs.getString("gender"),rs.getString("area"),rs.getString("pic"),rs.getString("description"));
+							users.add(u);
+							System.out.println(u.toString());
+						}
+						rs.close();
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					
+					
+
+					return users;
+				}
+				
+				public void deleteBlock(String owner, String deleted) {
+					try{
+						Connection con = ConnectionDB.conectarMySQL();
+						Statement stmt = con.createStatement();
+						
+						boolean borrado = stmt.execute("DELETE FROM block WHERE owner ="+owner+" and blocked ="+deleted);
+						
+						if (borrado){
+							System.out.println("Usuario desbloqueado");
+						}
+						stmt.close();
+					}catch (SQLException ex){
+						System.out.println(ex);
+						
+					}
+					
+				}
+				
+				public void update(String password, String name, String age, String gender, String area, String pic, String description, String id) {
+					try{
+						Connection con = ConnectionDB.conectarMySQL();
+						Statement stmt = con.createStatement();
+						
+						if (password != null && !password.isEmpty()) {
+							stmt.execute(	"UPDATE user SET password = '" +password+ "' WHERE id = "+id+"");
+							System.out.println(password);
+						}
+						if (name != null && !name.isEmpty()) {
+							stmt.execute(	"UPDATE user SET name = '" +name+ "' WHERE id = "+id+"");
+						}
+						if (age != null && !age.isEmpty()) {
+							stmt.execute(	"UPDATE user SET age = " +age+ " WHERE id = "+id+"");
+						}
+						if (gender != null && !gender.isEmpty()) {
+							stmt.execute(	"UPDATE user SET gender = '" +gender+ "' WHERE id = "+id+"");
+						}
+						if (area != null && !area.isEmpty()) {
+							stmt.execute(	"UPDATE user SET area = '" +area+ "' WHERE id = "+id+"");
+						}
+						if (pic != null && !pic.isEmpty()) {
+							stmt.execute(	"UPDATE user SET pic = '" +pic+ "' WHERE id = "+id+"");
+						}
+						if (description != null && !description.isEmpty()) {
+							stmt.execute(	"UPDATE user SET description = '" +description+ "' WHERE id = "+id+"");
+						}
+
+						stmt.close();
+					}catch (SQLException ex){
+						System.out.println(ex);
+						
+					}
+					
 				}
 				
 				

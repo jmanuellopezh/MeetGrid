@@ -6,21 +6,20 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.iesalixar.jmanuellopezh.model.UserDAOImpl;
 
 /**
- * Servlet implementation class DeleteUser
+ * Servlet implementation class DeleteUserAdmin
  */
-@WebServlet("/DeleteUser")
-public class DeleteUser extends HttpServlet {
+@WebServlet("/DeleteUserAdmin")
+public class DeleteUserAdmin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DeleteUser() {
+    public DeleteUserAdmin() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -40,10 +39,10 @@ public class DeleteUser extends HttpServlet {
 		UserDAOImpl u =new UserDAOImpl();
 
 
-		String id=request.getParameter("deleted");
+		String id=request.getParameter("id");
 		
 		u.deleteUser(id);
-		response.sendRedirect("Logout");
+		response.sendRedirect("ReadReports");
 	}
 
 }

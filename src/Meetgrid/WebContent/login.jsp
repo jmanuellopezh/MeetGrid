@@ -43,7 +43,7 @@
       
       <!-- fin del nav -->
       <div class="container">
-	       <div class="row ">
+	       <div class="row">
 	       
       <!-- carrusel bootstrap -->
     			<div class="bd-example mt-5 h-75 col-lg-6 col-m-6 col-12 rounded order-lg-1 order-m-1 order-sm-2">
@@ -111,13 +111,21 @@
 			    if(null!=request.getAttribute("errorMessage"))
 			    {%>
 			        <div class="alert alert-danger ml-lg-3 mr-lg-3 mt-5 mg-3 col-12 order-3" role="alert"> <p class="text-center"><fmt:message key="login.error" /></p></div>
-			    <%}
-			    %>
-		
-		
+			    <%}%>
+			    
+			    <ul class="list-group ml-lg-3 mr-lg-3 mt-5 mg-3 col-12 order-4">
+					  <li class="list-group-item list-group-item-dark"><strong>Pautas para la comunidad:</strong> lo siguiente queda prohibido y puede ser motivo de no ingreso, modificación de su perfil o expulsión.</li>
+					  <li class="list-group-item ">Actividades Ilegales (como vender drogas o solicitación sexual)</li>
+					  <li class="list-group-item ">Spam o publicidad</li>
+					  <li class="list-group-item ">Acoso o abuso de cualquier tipo</li>
+					  <li class="list-group-item ">Discriminación o contenido que incite al odio de cualquier tipo</li>
+					  <li class="list-group-item ">Desnudez o Pornografia</li>
+					  <li class="list-group-item ">Menor(es) de edad</li>
+					  <li class="list-group-item ">Usurpación de identidad(es)</li>
+				</ul>
+
 		</div>
-		
-</div>
+	</div>
 </body>
 </html>
 

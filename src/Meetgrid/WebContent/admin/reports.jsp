@@ -6,8 +6,9 @@
 <html>
 
 <%  HttpServletRequest httpRequest = (HttpServletRequest) request;
-			String deleteURI = httpRequest.getContextPath() + "/DeleteUser";
-			String deleteReportURI = httpRequest.getContextPath() + "/DeleteReport";%>
+			String deleteURI = httpRequest.getContextPath() + "/DeleteUserAdmin";
+			String deleteReportURI = httpRequest.getContextPath() + "/DeleteReport";
+			String updateURI = httpRequest.getContextPath() + "/UpdateAdmin";%>
 
 <head>
     <meta charset="UTF-8">
@@ -28,9 +29,6 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarText">
           <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link">Gestión interna de usuarios.</a>
-          </li>
           <li class="nav-item">
               <a class="nav-link" href="Logout">Cerrar sesión</a>
            </li>
@@ -72,9 +70,9 @@
 				</div>
 						
 				<div class="mt-1 col-12 col-m-4 col-lg-3">
-						<form method = "post" >
+						<form method = "get" action=<%=updateURI %>>
 					
-							<input type="hidden" name="idreport" "/>
+							<input type="hidden" name="visit" value ="<%=r.getReportedId() %>"/>
 					
 							<input class="btn btn-danger col-12" type="submit" value="Modificar usuario reportado"/>
 						</form>

@@ -22,7 +22,7 @@
 <body>
 	
 	 <!--header y barra de navegacion-->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-danger sticky-top">
         <img src="img/logosmall.png" width="40" height="40" class="d-inline-block align-top" alt="MeetGrid">
         <a class="navbar-brand" >MeetGrid</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,9 +30,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarText">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link"><fmt:message key="login.welcome" /></a>
-            </li>
+
 
           </ul>
           <span class="navbar-text">
@@ -47,7 +45,7 @@
 
 				<!-- register -->
 			
-				<form class= "mt-3 rounded border border-dark form-row" action="./Register" method="post" id="form">
+				<form class= "mt-3 mb-2 rounded border border-dark form-row" action="./Register" method="post" id="form">
 					<fieldset class="col-12">
 						<label>Email</label>
 						<input class="form-control" type="text" name="email" id="email" required onblur="compruebaEmail()" placeholder="Formato email: usuario@dominio.com/es.org...">
@@ -139,7 +137,7 @@
 						<label>Sobre mi:</label>
 						<textarea class="form-control" rows="10" type="text" name="description"></textarea>
 						
-						<button class="btn btn-danger col-12" onclick="compruebaTodo()" type="submit" value="register">Registrarse</button>
+						<button class="btn btn-danger col-12 mt-2 mb-2" onclick="compruebaTodo()" type="submit" value="register">Registrarse</button>
 					</fieldset>
 					
 				</form>
@@ -331,10 +329,13 @@
         if (compruebaPassFin()){
             compruebaPassOtraFin();
         }
-       
-        
-        //con esta línea volvemos al primer error
-        document.getElementById(primerError).scrollIntoView({block: 'start', behavior: 'smooth'});
+
+        if (primerError==''){
+        	confirm("Usuario registrado. Inicie sesión con su email y contraseña.");
+        }else{
+        	//con esta línea volvemos al primer error
+            document.getElementById(primerError).scrollIntoView({block: 'start', behavior: 'smooth'});
+        }
     }
 
 

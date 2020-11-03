@@ -11,14 +11,33 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <LINK REL=StyleSheet HREF="custom.css" TYPE="text/css" MEDIA=screen>
     <title>MeetGrid - Perfiles</title>
     <link rel="icon" type="image/png" href="img/logosmall.png">
+    <LINK REL=StyleSheet HREF="custom.css" TYPE="text/css" MEDIA=screen>
+    <style>
+    /* Shrink */
+		.card {
+		  display: inline-block;
+		  vertical-align: middle;
+		  -webkit-transform: perspective(1px) translateZ(0);
+		  transform: perspective(1px) translateZ(0);
+		  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+		  -webkit-transition-duration: 0.3s;
+		  transition-duration: 0.3s;
+		  -webkit-transition-property: transform;
+		  transition-property: transform;
+		}
+		.card:hover, .hvr-shrink:focus, .hvr-shrink:active {
+		  -webkit-transform: scale(0.97);
+		  transform: scale(0.97);
+		}
+    </style>
+    
 </head>
 <body>
 
     <!--header y barra de navegacion-->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-danger sticky-top">
         <img src="img/logosmall.png" width="40" height="40" class="d-inline-block align-top" alt="MeetGrid">
         <a class="navbar-brand" href="ReadUsersByFilter">MeetGrid</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -132,9 +151,9 @@
                       <option value="Zaragoza">Zaragoza</option>
                     </select>
                 </li>
-            <input class="form-control mr-1" type="search" placeholder="Edad mínima" aria-label="Search" name="min">
-            <input class="form-control mr-1" type="search" placeholder="Edad máxima" aria-label="Search" name="max">
-            <button class="btn btn-outline-danger my-2" type="submit">Aplicar filtros</button>
+            <input class="form-control mr-1" type="search" placeholder="Edad mínima" aria-label="Search" name="min" id="min">
+            <input class="form-control mr-1" type="search" placeholder="Edad máxima" aria-label="Search" name="max" id="max">
+            <button class="btn btn-outline-danger my-2" type="submit" onclick="compruebaEdad()">Aplicar filtros</button>
           </form>
       </nav>
 
@@ -155,16 +174,17 @@
 
           <div class="card-body">
             <h5 class="card-title"><%=u.getName() %></h5>
-            <p class="card-text">Edad: <%=u.getAge() %></p>
+            <p class="card-text mb-0">Edad: <%=u.getAge() %></p>
+            <p class="card-text mb-0"><small class="text-muted">Género: <%=u.getGenderFull() %></small></p>
             <p class="card-text"><small class="text-muted">Provincia: <%=u.getArea() %></small></p>
           </div>
           
-          <form class="d-flex justify-content-center" method = "get" action=<%=profileURI %>>
-			
-			<input type="hidden" name="id" value ="<%=u.getId() %>"/>
-			
-			<input class="btn btn-danger mb-2 w-100" type="submit" value="Ver Perfil"/>
-	</form>
+	          <form class="d-flex justify-content-center" method = "get" action=<%=profileURI %>>
+				
+				<input type="hidden" name="id" value ="<%=u.getId() %>"/>
+				
+				<input class="btn btn-danger mb-2 w-100" type="submit" value="Ver Perfil"/>
+			</form>
         </div>
         
         <%
@@ -182,8 +202,22 @@
 	</div>	
 
 
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script>
+
+function compruebaEdad(){
+	min = document.getElementById("min").value;
+	max = document.getElementById("max").value;
+	
+	if (min < 18){
+    	confirm("No puede elegirse menores de 18 años.");
+    }
+	
+	if (min > max){
+    	confirm("La edad máxima no puede ser menor que la mínima.");
+    }
+	
+}
+
+</script>
 </body>
 </html>

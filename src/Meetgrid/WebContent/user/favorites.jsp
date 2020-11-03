@@ -8,14 +8,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <LINK REL=StyleSheet HREF="custom.css" TYPE="text/css" MEDIA=screen>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <title>MeetGrid - Favoritos</title>
     <link rel="icon" type="image/png" href="img/logosmall.png">
+    <LINK REL=StyleSheet HREF="custom.css" TYPE="text/css" MEDIA=screen>
+    <style>
+    /* Shrink */
+		.card {
+		  display: inline-block;
+		  vertical-align: middle;
+		  -webkit-transform: perspective(1px) translateZ(0);
+		  transform: perspective(1px) translateZ(0);
+		  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+		  -webkit-transition-duration: 0.3s;
+		  transition-duration: 0.3s;
+		  -webkit-transition-property: transform;
+		  transition-property: transform;
+		}
+		.card:hover, .hvr-shrink:focus, .hvr-shrink:active {
+		  -webkit-transform: scale(0.97);
+		  transform: scale(0.97);
+		}
+    </style>
+    
 </head>
 <body>
 
     <!--header y barra de navegacion-->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-danger sticky-top">
         <img src="img/logosmall.png" width="40" height="40" class="d-inline-block align-top" alt="MeetGrid">
         <a class="navbar-brand" href="ReadUsersByFilter">MeetGrid</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -67,7 +89,8 @@ String deleteFavoriteURI = httpRequest.getContextPath() + "/DeleteFavorite";%>
 
           <div class="card-body">
             <h5 class="card-title"><%=u.getName() %></h5>
-            <p class="card-text">Edad: <%=u.getAge() %></p>
+            <p class="card-text mb-0">Edad: <%=u.getAge() %></p>
+            <p class="card-text mb-0"><small class="text-muted">Género: <%=u.getGenderFull() %></small></p>
             <p class="card-text"><small class="text-muted">Provincia: <%=u.getArea() %></small></p>
           </div>
           

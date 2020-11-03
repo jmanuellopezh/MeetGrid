@@ -171,7 +171,6 @@ public class UserDAOImpl implements UserDAO {
 				while (rs.next()) {
 					User u = new User(rs.getString("id"), rs.getString("email"),rs.getString("password"),rs.getString("role"),rs.getString("name"),rs.getString("age"),rs.getString("gender"),rs.getString("area"),rs.getString("pic"),rs.getString("description"));
 					users.add(u);
-					System.out.println(u.toString());
 				}
 				rs.close();
 			} catch (SQLException e) {
@@ -202,7 +201,6 @@ public class UserDAOImpl implements UserDAO {
 					} catch (SQLException e) {
 						e.printStackTrace();
 					}
-					System.out.println(user.toString());
 					return user;
 				}
 				
@@ -232,7 +230,6 @@ public class UserDAOImpl implements UserDAO {
 						while (rs.next()) {
 							User u = new User(rs.getString("id"), rs.getString("email"),rs.getString("password"),rs.getString("role"),rs.getString("name"),rs.getString("age"),rs.getString("gender"),rs.getString("area"),rs.getString("pic"),rs.getString("description"));
 							users.add(u);
-							System.out.println(u.toString());
 						}
 						rs.close();
 					} catch (SQLException e) {
@@ -365,7 +362,6 @@ public class UserDAOImpl implements UserDAO {
 						while (rs.next()) {
 							User u = new User(rs.getString("id"), rs.getString("email"),rs.getString("password"),rs.getString("role"),rs.getString("name"),rs.getString("age"),rs.getString("gender"),rs.getString("area"),rs.getString("pic"),rs.getString("description"));
 							users.add(u);
-							System.out.println(u.toString());
 						}
 						rs.close();
 					} catch (SQLException e) {

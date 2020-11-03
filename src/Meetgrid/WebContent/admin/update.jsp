@@ -15,6 +15,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <LINK REL=StyleSheet HREF="custom.css" TYPE="text/css" MEDIA=screen>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <title>MeetGrid - Mi perfil</title>
     <link rel="icon" type="image/png" href="img/logosmall.png">
 </head>
@@ -24,7 +27,7 @@
 		String updateURI = httpRequest.getContextPath() + "/UpdateAdmin";%>
 
 <!--header y barra de navegacion-->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-danger sticky-top">
         <img src="img/logosmall.png" width="40" height="40" class="d-inline-block align-top" alt="MeetGrid">
         <a class="navbar-brand" href="ReadReports">MeetGrid</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -165,7 +168,7 @@
 						<label>Sobre mi:</label>
 						<textarea class="form-control" rows="10" type="text" name="description"></textarea>
 						<input type="hidden" name="id"  value="<%=u.getId() %>"/>
-						<button class="btn btn-danger col-12 col-m-6 col-lg-6 offset-m-3 offset-lg-3 mt-2 mb-2" type="submit" value="update">Modificar perfil</button>
+						<button class="btn btn-danger col-12 col-m-6 col-lg-6 offset-m-3 offset-lg-3 mt-2 mb-2" onclick="compruebaTodo()" type="submit" value="update">Modificar perfil</button>
 						
 					</fieldset>
 					
@@ -180,19 +183,19 @@
 
 //funciones de verificacion de datos
 
-    function compruebaEmail() {
-        expr = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-        email = document.getElementById("email").value;
-        if (!expr.test(email) && email != "") {
+	 function compruebaUsuario() {
+	        expr = /^([A-Za-z0-9_]{1,15})$/;//si pide una longitud de usuario diferente recuerda cambiarla aqui
+	        usuario = document.getElementById("usuario").value;
+	        if (!expr.test(usuario) && usuario != "") {
+	
+	            document.getElementById("usuario").style.backgroundColor = "red";
+	
+	        }        
+	        else if (expr.test(usuario)){
+	            document.getElementById("usuario").style.backgroundColor = "lightgreen";
+	        }
+	    }
 
-            document.getElementById("email").style.backgroundColor = "red";
-
-
-        } 
-        else if (expr.test(email)) {
-            document.getElementById("email").style.backgroundColor = "lightgreen";
-        }
-    }
 
     function compruebaPass() {
         expr = /^([a-zA-Z0-9]{6,10})+$/;
@@ -254,6 +257,89 @@
             document.getElementById("edad").style.backgroundColor = "lightgreen";
         }
     }
+    
+  //FUNCIONES DE COMPROBACION DE REGEX CON MENSAJES AL DARLE AL BOTON
+
+    
+    //variable global que usare para guardar el primer error y hacer la animacion (TODO ESTO AL ENVIAR AL FINAL, NO EN ONBLUR)
+    var primerError='';
+
+
+function compruebaUsuarioFin() {
+    expr = /^([A-Za-z0-9_]{1,15})$/;//si pide una longitud de usuario diferente recuerda cambiarla aqui
+    usuario = document.getElementById("usuario").value;
+    if (!expr.test(usuario) && usuario != "") {
+        document.getElementById("usuario").value=("");
+
+        alert("Error: Nombre de usuario incorrecto. Son letras mayusculas, minusculas y numeros entre 1 y 15 caracteres");
+        if (primerError==''){
+            primerError="usuario";//GUARDO EL NOMBRE DE LA ETIQUETA
+        }
+    }
+    
+}
+
+function compruebaPassFin() {
+    expr = /^([a-zA-Z0-9]{6,10})+$/;
+    pass = document.getElementById("pass").value;
+    var existe = false;
+    if (!expr.test(pass) && pass != "") {
+        document.getElementById("pass").value=("");
+        alert("Error: El password " + pass + " es incorrecto. Puede contener numeros y letras, min 6 max 10 caracteres.");
+        existe =true;
+
+        if (primerError==''){
+            primerError="pass";//GUARDO EL NOMBRE DE LA ETIQUETA
+        }
+    }else if (expr.test(pass)){
+        existe =true;
+    }
+
+    return existe;
+}
+
+function compruebaPassOtraFin() {
+    expr = /^([a-zA-Z0-9]{6,10})+$/;
+    passotra = document.getElementById("passotra").value;
+    pass = document.getElementById("pass").value;
+    if (!expr.test(passotra) && passotra != "") {
+        document.getElementById("passotra").value=("");
+
+        alert("Error: El password " + passotra + " es incorrecto. Puede contener numeros y letras, min 6 max 10 caracteres y debe ser igual al indicado arriba.");
+        if (primerError==''){
+            primerError="passotra";//GUARDO EL NOMBRE DE LA ETIQUETA
+        }
+    } 
+    
+}
+
+function compruebaEdadFin() {
+    expr = /^(1[89]|[2-9][0-9]|1([0-3][0-9]|40))$/;
+    usuario = document.getElementById("edad").value;
+    if (!expr.test(usuario) && usuario != "") {
+        document.getElementById("edad").value=("");
+
+        alert("Error: La edad debe ser mínimo 18 años, sólo se admiten números");
+        if (primerError==''){
+            primerError="edad";
+        }
+    }
+    
+}
+
+function compruebaTodo(){
+    compruebaUsuarioFin();
+    compruebaEdadFin();
+
+    if (compruebaPassFin()){
+        compruebaPassOtraFin();
+    }
+   
+    
+    //con esta línea volvemos al primer error
+    document.getElementById(primerError).scrollIntoView({block: 'start', behavior: 'smooth'});
+}
+
 
 </script>
 

@@ -51,7 +51,9 @@ public class Report extends HttpServlet {
 		String reported = reportedobj.getId();
 		String motive=request.getParameter("motive");
 		
+		if (!motive.isEmpty()) {//los reportes vacíos no se registran
 		u.report(owner, reported, motive);
+		}
 		response.sendRedirect("user/report.jsp");
 			
 	}

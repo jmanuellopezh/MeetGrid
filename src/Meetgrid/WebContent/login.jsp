@@ -15,6 +15,22 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <LINK REL=StyleSheet HREF="custom.css" TYPE="text/css" MEDIA=screen>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+
+function cookies() {
+	  alert("<fmt:message key="login.cookies" />");
+	}
+	
+$(document).ready(function(){
+	cookies();
+	$('body').css('display', 'none');
+	$('body').fadeIn(400);
+});
+
+
+
+</script>
 <meta charset="ISO-8859-1">
 <title>Meetgrid - <fmt:message key="login.login" /></title>
 <link rel="icon" type="image/png" href="img/logosmall.png">
@@ -22,7 +38,7 @@
 <body>
 	
 	 <!--header y barra de navegacion-->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-danger sticky-top">
         <img src="img/logosmall.png" width="40" height="40" class="d-inline-block align-top" alt="MeetGrid">
         <a class="navbar-brand" href="ReadUsersByFilter">MeetGrid</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,9 +46,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarText">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link"><fmt:message key="login.welcome" /></a>
-            </li>
+            
 
           </ul>
           <span class="navbar-text">
@@ -113,7 +127,7 @@
 			        <div class="alert alert-danger ml-lg-3 mr-lg-3 mt-5 mg-3 col-12 order-3" role="alert"> <p class="text-center"><fmt:message key="login.error" /></p></div>
 			    <%}%>
 			    
-			    <ul class="list-group ml-lg-3 mr-lg-3 mt-5 mg-3 col-12 order-4">
+			    <ul class="list-group ml-lg-3 mr-lg-3 mt-5 mg-3 mb-2 col-12 order-4">
 					  <li class="list-group-item list-group-item-dark"><strong>Pautas para la comunidad:</strong> lo siguiente queda prohibido y puede ser motivo de no ingreso, modificación de su perfil o expulsión.</li>
 					  <li class="list-group-item ">Actividades Ilegales (como vender drogas o solicitación sexual)</li>
 					  <li class="list-group-item ">Spam o publicidad</li>

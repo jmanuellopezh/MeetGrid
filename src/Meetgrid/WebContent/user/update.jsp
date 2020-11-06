@@ -18,6 +18,11 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
+    <!-- importo el richtext compatible con Bootstrap para el apartado "Sobre mí" -->
+	<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+    
     <title>MeetGrid - Mi perfil</title>
     <link rel="icon" type="image/png" href="img/logosmall.png">
 </head>
@@ -75,13 +80,9 @@
                     <cite><%=u.getArea() %></cite>
                     <p><%=u.getGenderFull() %>, <%=u.getAge() %> años</p>
                     <h5>Sobre mí:</h5>
-                    <p class="rounded border border-dark row ml-1 mr-1 mt-4 p-2 col-12">
-
+                    <hr>
+						<!-- No encapsulo este atributo ya que carga un richtext con marcado propio -->
                         <%=u.getDescription() %>
-
-                    </p>
-
-
                 </div>
 
         </div>
@@ -173,11 +174,20 @@
 			                </div>
 						
 						
+						
 						<label>Foto de perfil</label>
-						<input class="form-control" type="text" name="pic">
+						
+                   		<!-- barrita de animacion de subida de archivo -->
+	                  	<progress class="col-12" value="0" id="uploader" max="100">0%</progress><br>
+						<!-- aqui cojo la imagen para guardarla en google -->
+						<input id="photo"class="file"type="file" name="mainimage" value="" onchange="getfile()">
+						<!-- aqui guardo la ruta en un div hidden para pasarla al servlet y guardarla en mysql -->
+						<input class="form-control" type="hidden" type="text" name="pic" id="pic">
+						<br> 
 						
 						<label>Sobre mi:</label>
-						<textarea class="form-control" rows="10" type="text" name="description"></textarea>
+						<textarea class="form-control" type="text" name="description" id="summernote"></textarea>
+						
 						<input type="hidden" name="id"  value="<%=u.getId() %>"/>
 						<button class="btn btn-danger col-12 col-m-6 col-lg-6 offset-m-3 offset-lg-3 mt-2 mb-2" onclick="compruebaTodo()" type="submit" value="update">Modificar perfil</button>
 						
@@ -358,7 +368,101 @@ function compruebaTodo(){
     document.getElementById(primerError).scrollIntoView({block: 'start', behavior: 'smooth'});
 }
 
+//funciones para el richtext
+$(document).ready(function() {
+	  $('#summernote').summernote();
+});
+	
+$('#summernote').summernote({
+    placeholder: 'Máximo 200 caracteres.',
+    tabsize: 2,
+    height: 200,
+    toolbar: [
+      ['font', ['bold', 'underline', 'clear']],
+      ['para', ['ul', 'ol', 'paragraph']],
+    ]
+ });
 
 </script>
+
+<!-- AQUI COMIENZAN LOS SCRIPTS DE FIREBASE, EL SERVICIO DE SUBIDA DE IMAGENES -->
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-storage.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+<script>
+  // Configuracion de mi proyecto de Google Firebase
+  var firebaseConfig = {
+    apiKey: "AIzaSyDVKGWXnCel_7B5Cpp5ge4XObTZE7uJ4aU",
+    authDomain: "meetgridalixar.firebaseapp.com",
+    databaseURL: "https://meetgridalixar.firebaseio.com",
+    projectId: "meetgridalixar",
+    storageBucket: "meetgridalixar.appspot.com",
+    messagingSenderId: "339055057610",
+    appId: "1:339055057610:web:4d1de48ba347f242207233"
+  };
+  // Inicializo Firebase
+  firebase.initializeApp(firebaseConfig);
+
+</script>
+
+<script type="text/javascript"> 
+
+	//funciones para subir la imagen
+       var selectedFile; 
+	
+      function getfile() 
+      { 
+          var pic = document.getElementById("photo");  
+          selectedFile = pic.files[0]; 
+			myfunction(); 
+      } 
+      
+      function myfunction() 
+      { 
+          // current timestamp, necesario para la subida
+          var name="123"+Date.now(); 
+  
+          // referencio el DIRECTORIO DENTRO DE MI ALMACENAMIENTO FIREBASE
+          var storageRef = firebase.storage().ref('/images/'+ name); 
+  
+          // hago put a firebase  
+          var uploadTask = storageRef.put(selectedFile); 
+  
+          // animacion de la barra de subida 
+          uploadTask.on('state_changed', function(snapshot){ 
+            var progress =  
+             (snapshot.bytesTransferred / snapshot.totalBytes) * 100; 
+              var uploader = document.getElementById('uploader'); 
+              uploader.value=progress; 
+              switch (snapshot.state) { 
+                case firebase.storage.TaskState.PAUSED: 
+                  console.log('Upload is paused'); 
+                  break; 
+                case firebase.storage.TaskState.RUNNING: 
+                  console.log('Upload is running'); 
+                  break; 
+              } 
+          }, function(error) {console.log(error); 
+          }, function() { 
+  
+               // recojo la url de la imagen subida 
+               uploadTask.snapshot.ref.getDownloadURL().then( 
+                function(downloadURL) { 
+  
+               // la muestro en consola 
+                console.log('File available at', downloadURL); 
+  
+              // IMPORTANTE: GUARDO LA URL EN EL DIV HIDDEN QUE USARE PARA PASAR EL VALUE AL SERVLET 
+               document.getElementById("pic").value=(downloadURL);
+            }); 
+          }); 
+      }; 
+ </script>
+
 
 </html>

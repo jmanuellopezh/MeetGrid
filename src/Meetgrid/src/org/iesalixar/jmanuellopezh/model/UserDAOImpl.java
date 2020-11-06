@@ -8,7 +8,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.http.HttpRequest;
 import org.iesalixar.jmanuellopezh.helper.ConnectionDB;
 
 public class UserDAOImpl implements UserDAO {
@@ -76,6 +75,7 @@ public class UserDAOImpl implements UserDAO {
 	}
 	
 	//LEE LOS USUARIOS CON ROL USER DE NUESTRA BD (UTIL PARA EL GRID, NO LO USO EN ESTA VERSIÓN)
+
 	public static List<User> readUser() {
 
 		List<User> users = null;
@@ -138,7 +138,7 @@ public class UserDAOImpl implements UserDAO {
 	}
 	
 	//DEVUELVE SI UN favorito YA EXISTE O NO, EVALUANDO EL EMAIL
-
+	@Override
 		public boolean checkExistingFavorite(String owner, String favorited) {
 
 			boolean found = false;
@@ -158,6 +158,7 @@ public class UserDAOImpl implements UserDAO {
 		}
 	
 	//LEE LOS USUARIOS SEGÚN EL FILTRO DEL GRID
+		@Override
 		public List<User> readByFilter(String gender, String area, String min, String max, String id) {
 
 			List<User> users = null;
@@ -186,24 +187,26 @@ public class UserDAOImpl implements UserDAO {
 				
 				
 				//LEE LOS DATOS DE UN USUARIO EN CONCRETO, EL QUE SE LE PASA EL id POR PARAMETRO
-				public User readUserById(String id) {
-					Connection c = ConnectionDB.conectarMySQL();
-					User user = null;
-					try {
-						PreparedStatement stmt = c.prepareStatement("select * from user where id=?");
-						stmt.setString(1, id);
-						
-						ResultSet rs = stmt.executeQuery();
-						while (rs.next())
-							user = new User(rs.getString("id"), rs.getString("email"),rs.getString("password"),rs.getString("role"),rs.getString("name"),rs.getString("age"),rs.getString("gender"),rs.getString("area"),rs.getString("pic"),rs.getString("description"));
+			@Override
+			public User readUserById(String id) {
+				Connection c = ConnectionDB.conectarMySQL();
+				User user = null;
+				try {
+					PreparedStatement stmt = c.prepareStatement("select * from user where id=?");
+					stmt.setString(1, id);
+					
+					ResultSet rs = stmt.executeQuery();
+					while (rs.next())
+						user = new User(rs.getString("id"), rs.getString("email"),rs.getString("password"),rs.getString("role"),rs.getString("name"),rs.getString("age"),rs.getString("gender"),rs.getString("area"),rs.getString("pic"),rs.getString("description"));
 
-						rs.close();
-					} catch (SQLException e) {
-						e.printStackTrace();
-					}
-					return user;
+					rs.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+				return user;
 				}
 				
+				@Override
 				public void makeFavorite(String owner, String favorited) {
 					try {
 						Connection c = ConnectionDB.conectarMySQL();
@@ -218,6 +221,7 @@ public class UserDAOImpl implements UserDAO {
 
 				}
 				
+				@Override
 				public List<User> readFavorites(String owner) {
 
 					List<User> users = null;
@@ -242,7 +246,7 @@ public class UserDAOImpl implements UserDAO {
 					return users;
 				}
 				
-				
+				@Override
 				public boolean checkExistingBlocked(String owner, String blocked) {
 
 					boolean found = false;
@@ -261,6 +265,7 @@ public class UserDAOImpl implements UserDAO {
 					return found;
 				}
 				
+				@Override
 				public void block(String owner, String blocked) {
 					try {
 						Connection c = ConnectionDB.conectarMySQL();
@@ -275,6 +280,7 @@ public class UserDAOImpl implements UserDAO {
 
 				}
 				
+				@Override
 				public void deleteFavorite(String owner, String deleted) {
 					try{
 						Connection con = ConnectionDB.conectarMySQL();
@@ -312,6 +318,7 @@ public class UserDAOImpl implements UserDAO {
 					
 				}
 				
+				@Override
 				public void deleteUser(String id) {
 					try{
 						Connection con = ConnectionDB.conectarMySQL();
@@ -350,6 +357,7 @@ public class UserDAOImpl implements UserDAO {
 					return found;
 				}
 				
+				@Override
 				public List<User> readBlocks(String owner) {
 
 					List<User> users = null;
@@ -374,6 +382,7 @@ public class UserDAOImpl implements UserDAO {
 					return users;
 				}
 				
+				@Override
 				public void deleteBlock(String owner, String deleted) {
 					try{
 						Connection con = ConnectionDB.conectarMySQL();
@@ -392,6 +401,7 @@ public class UserDAOImpl implements UserDAO {
 					
 				}
 				
+				@Override
 				public void update(String password, String name, String age, String gender, String area, String pic, String description, String id) {
 					try{
 						Connection con = ConnectionDB.conectarMySQL();

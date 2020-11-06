@@ -10,7 +10,7 @@ import java.util.List;
 
 import org.iesalixar.jmanuellopezh.helper.ConnectionDB;
 
-public class MessageDAOImpl {
+public class MessageDAOImpl implements MessageDAO{
 	
 	//LEE LOS MENSAJES ENTRE EL USUARIO Y UN USUARIO VISITADO
 		public static List<Message> readMessages(String sender, String receiver) {
@@ -34,6 +34,7 @@ public class MessageDAOImpl {
 			return messages;
 		}
 		
+		@Override
 		public void create(String sender, String receiver, String content) {
 			
 			try {

@@ -10,8 +10,9 @@ import java.util.List;
 
 import org.iesalixar.jmanuellopezh.helper.ConnectionDB;
 
-public class ReportDAOImpl {
+public class ReportDAOImpl implements ReportDAO{
 	
+	@Override
 	public void report(String owner, String reported, String motive) {
 		try {
 			Connection c = ConnectionDB.conectarMySQL();
@@ -26,7 +27,6 @@ public class ReportDAOImpl {
 
 	}
 	
-	//LEE LOS MENSAJES ENTRE EL USUARIO Y UN USUARIO VISITADO
 			public static List<Report> readReports() {
 				
 				List<Report> reports = null;
@@ -48,6 +48,7 @@ public class ReportDAOImpl {
 				return reports;
 			}
 			
+			@Override
 			public void deleteReport(String id) {
 				try{
 					Connection con = ConnectionDB.conectarMySQL();

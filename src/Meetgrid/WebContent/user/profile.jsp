@@ -76,13 +76,9 @@
                     <cite><%=u.getArea() %></cite>
                     <p><%=u.getGenderFull() %>, <%=u.getAge() %> años</p>
                     <h5>Sobre mí:</h5>
-                    <p class="rounded border border-dark row ml-1 mr-1 mt-4 p-2 col-12">
-
+                    <hr>
+						<!-- No encapsulo este atributo ya que carga un richtext con marcado propio -->
                         <%=u.getDescription() %>
-
-                    </p>
-
-
                 </div>
 
         </div>

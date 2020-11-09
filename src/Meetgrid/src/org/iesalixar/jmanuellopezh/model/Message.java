@@ -2,22 +2,24 @@ package org.iesalixar.jmanuellopezh.model;
 
 public class Message {
 	
-	String id, sender, receiver, content, date;
+	String id, sender, receiver, content, pic, date;
 
-	public Message(String id, String sender, String receiver, String content, String date) {
+	public Message(String id, String sender, String receiver, String content, String pic, String date) {
 		super();
 		this.id = id;
 		this.sender = sender;
 		this.receiver = receiver;
 		this.content = content;
+		this.pic = pic;
 		this.date = date;
 	}
 
-	public Message(String sender, String receiver, String content, String date) {
+	public Message(String sender, String receiver, String content, String pic, String date) {
 		super();
 		this.sender = sender;
 		this.receiver = receiver;
 		this.content = content;
+		this.pic = pic;
 		this.date = date;
 	}
 
@@ -64,6 +66,14 @@ public class Message {
 
 	public void setDate(String date) {
 		this.date = date;
+	}
+
+	public String getPic() {
+		return pic;
+	}
+
+	public void setPic(String pic) {
+		this.pic = pic;
 	}
 	
 	

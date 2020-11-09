@@ -61,7 +61,7 @@ public class Favorite extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		UserDAOImpl us =new UserDAOImpl();
 	
-		doGet(request, response);
+		//doGet(request, response);
 		HttpSession session = request.getSession();
 		String owner = (String)session.getAttribute("Id");
 		User favoritedobj = (User) session.getAttribute("visit");

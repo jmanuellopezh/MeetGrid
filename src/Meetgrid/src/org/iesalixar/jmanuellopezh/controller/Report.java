@@ -44,7 +44,7 @@ public class Report extends HttpServlet {
 	 */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ReportDAOImpl u =new ReportDAOImpl();
-		doGet(request, response);
+		//doGet(request, response);
 		HttpSession session = request.getSession();
 		String owner = (String)session.getAttribute("Id");
 		User reportedobj = (User) session.getAttribute("visit");

@@ -59,7 +59,7 @@ public class Block extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		UserDAOImpl us =new UserDAOImpl();
 	
-		doGet(request, response);
+		//doGet(request, response);
 		HttpSession session = request.getSession();
 		String owner = (String)session.getAttribute("Id");
 		User blockedobj = (User) session.getAttribute("visit");

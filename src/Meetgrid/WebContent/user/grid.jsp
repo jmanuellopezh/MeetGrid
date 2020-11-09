@@ -46,7 +46,7 @@
         <div class="collapse navbar-collapse" id="navbarText">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="#">Perfiles</a>
+              <a class="nav-link" href="ReadUsersByFilter">Perfiles</a>
             </li>
             
             <li class="nav-item">
@@ -208,11 +208,16 @@ function compruebaEdad(){
 	min = document.getElementById("min").value;
 	max = document.getElementById("max").value;
 	
-	if (min < 18){
+	if (min == "" || max == ""){
+    	confirm("Debe rellenar ambos campos de edad para poder usar los filtros de búsqueda");
+    }
+	
+	
+	if (min < 18 & min != ""){
     	confirm("No puede elegirse menores de 18 años.");
     }
 	
-	if (min > max){
+	if (min > max & max != ""){
     	confirm("La edad máxima no puede ser menor que la mínima.");
     }
 	

@@ -67,8 +67,9 @@ public class Messages extends HttpServlet {
 		User receiverobj = (User) session.getAttribute("visit");
 		String receiver = receiverobj.getId();
 		String content=request.getParameter("content");
+		String pic=request.getParameter("pic");
 		
-		m.create(sender, receiver, content);
+		m.create(sender, receiver, content, pic);
 		response.sendRedirect("Messages");
 			
 	}

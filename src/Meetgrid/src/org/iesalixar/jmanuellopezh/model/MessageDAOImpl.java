@@ -23,7 +23,7 @@ public class MessageDAOImpl implements MessageDAO{
 				messages = new ArrayList<Message>();
 
 				while (rs.next()) {
-					Message m = new Message(rs.getString("id"), rs.getString("sender"),rs.getString("receiver"),rs.getString("content"),rs.getString("date"));
+					Message m = new Message(rs.getString("id"), rs.getString("sender"),rs.getString("receiver"),rs.getString("content"), rs.getString("pic"),rs.getString("date"));
 					messages.add(m);
 				}
 				rs.close();
@@ -35,7 +35,7 @@ public class MessageDAOImpl implements MessageDAO{
 		}
 		
 		@Override
-		public void create(String sender, String receiver, String content) {
+		public void create(String sender, String receiver, String content, String pic) {
 			
 			try {
 				
@@ -43,7 +43,7 @@ public class MessageDAOImpl implements MessageDAO{
 				if(!UserDAOImpl.checkBlocked(receiver, sender)) {
 				Connection c = ConnectionDB.conectarMySQL();
 				PreparedStatement stmt = c.prepareStatement(
-						"INSERT INTO message (sender, receiver, content, date) VALUES ('" + sender + "','" + receiver + "','"+ content +"', LOCALTIMESTAMP())");
+						"INSERT INTO message (sender, receiver, content, pic, date) VALUES ('" + sender + "','" + receiver + "','"+ content +"','"+pic+"', LOCALTIMESTAMP())");
 				
 
 				stmt.executeUpdate();

@@ -55,7 +55,7 @@ public class Register extends HttpServlet {
 		String description=request.getParameter("description");
 		
 		
-		if(password.equals(repeatpassword)){//compruebo que los password sean iguales
+		if(password.equals(repeatpassword)){//compruebo que los password sean iguales por segunda vez (solo por seguridad, el cliente lo hace por JS)
 		
 			if(us.checkExistingUser(email)==false) {
 				us.create(email, password, role, name, age, gender, area, pic, description);
@@ -66,16 +66,8 @@ public class Register extends HttpServlet {
 			}
 			
 		}else {
-			
-			response.sendRedirect("error.jsp");//si fallan los password manda a un jsp plano
-			
+			response.sendRedirect("register.jsp");
 		}
-		
-		
-		
-		
-			
-		
 		
 	}
 

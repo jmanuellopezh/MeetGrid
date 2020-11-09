@@ -35,6 +35,7 @@
     
 </head>
 <body>
+<a name="top"></a>
 
     <!--header y barra de navegacion-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-danger sticky-top">
@@ -158,7 +159,7 @@
       </nav>
 
       <!--grid de perfiles-->
-      <div class="row ml-3 mr-3 pt-4">
+      <div class="row ml-3 mr-3 pt-4 mb-lg-5">
 	<%
     
 		List<User> li = (List<User>) session.getAttribute("lista");
@@ -200,7 +201,14 @@
 
 		<%} %>
 	</div>	
-
+	
+	<footer class="fixed-bottom navbar-dark bg-danger d-none d-lg-block">
+		<a href="#top" class="ml-3" >
+			<img border="0" alt="Volver arriba." src="img/up.png" width="40" height="40">
+		</a>
+    	<span class="navbar-text float-right mr-3">®IES Alixar, 2020</span>
+    </footer>
+</body>
 
 <script>
 
@@ -224,5 +232,5 @@ function compruebaEdad(){
 }
 
 </script>
-</body>
+
 </html>

@@ -22,6 +22,7 @@
 <link rel="icon" type="image/png" href="img/logosmall.png">
 </head>
 <body>
+<a name="top"></a>
 	
 	 <!--header y barra de navegacion-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-danger sticky-top">
@@ -42,7 +43,7 @@
       </nav>
       
       <!-- fin del nav -->
-      <div class="container">
+      <div class="container mb-lg-5">
 
 
 				<!-- register -->
@@ -149,10 +150,15 @@
 					</fieldset>
 					
 				</form>
-				
-				
-
+	
 	</div>
+
+	<footer class="fixed-bottom navbar-dark bg-danger d-none d-lg-block">
+		<a href="#top" class="ml-3" >
+			<img border="0" alt="Volver arriba." src="img/up.png" width="40" height="40">
+		</a>
+    	<span class="navbar-text float-right mr-3">®IES Alixar, 2020</span>
+    </footer>
 </body>
 
 <script type="text/javascript">

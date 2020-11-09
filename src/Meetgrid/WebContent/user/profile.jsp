@@ -111,5 +111,8 @@
             </form>
         </div>
     </div>
+    <footer class="fixed-bottom navbar-dark bg-danger d-none d-lg-block ">
+    	<span class="navbar-text float-right mr-3">®IES Alixar, 2020</span>
+    </footer>
     </body>
     </html>

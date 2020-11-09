@@ -68,7 +68,7 @@
 	       <div class="row ">
        		<div class="alert alert-danger ml-lg-3 mr-lg-3 mt-5 mg-3 col-12" role="alert">
   				<p class="text-center">El equipo de moderación estudiará su reporte y tomará medidas en un plazo de 24-48h laborables.</p>
-  				<p class="text-center">Recuerde leer las <a href="#" class="alert-link">normas de la aplicación</a> para informarse sobre el procedimiento que tomaremos.</p>
+  				<p class="text-center">Recuerde leer las <strong>pautas para la comunidad</strong> para ver qué está permitido y qué no.</p>
   				<p class="text-center">Gracias por su colaboración, trabajamos juntos por una comunidad mejor.</p>
 			</div>
 			
@@ -76,6 +76,9 @@
 		</div>
        </div>
        
+       <footer class="fixed-bottom navbar-dark bg-danger d-none d-lg-block">
+	    	<span class="navbar-text float-right mr-3">®IES Alixar, 2020</span>
+    	</footer>
 
 </body>
 

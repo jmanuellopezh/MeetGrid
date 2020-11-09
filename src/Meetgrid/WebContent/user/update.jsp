@@ -27,6 +27,7 @@
     <link rel="icon" type="image/png" href="img/logosmall.png">
 </head>
 <body>
+<a name="top"></a>
 
 		<%  HttpServletRequest httpRequest = (HttpServletRequest) request;
 		String deleteURI = httpRequest.getContextPath() + "/DeleteUser";
@@ -89,7 +90,7 @@
         <!--MODIFICAR PERFIL-->
         	<h3 class="mt-3">Modificar datos:</h3>
 			
-				<form class= "mt-3 rounded border border-dark form-row" action=<%=updateURI %> method="post" id="form">
+				<form class= "mt-3 rounded border border-dark form-row " action=<%=updateURI %> method="post" id="form">
 					<fieldset class="col-12">
 						
 						<label>Contraseña</label>
@@ -199,12 +200,20 @@
 				<form method="post" action=<%=deleteURI %> >
 	
 							<input type="hidden" name="deleted"  value="<%=u.getId() %>"/>
-							<input class="btn btn-outline-danger col-12 col-m-6 col-lg-6 offset-m-3 offset-lg-3 mt-2 mb-2" type="submit" onclick="return confirm('¿Desea continuar el borrado de su perfil? Esta acción es irreversible.');" value="Borrar perfil"/>
+							<input class="btn btn-outline-danger col-12 col-m-6 col-lg-6 offset-m-3 offset-lg-3 mt-2 mb-2 mb-lg-5" type="submit" onclick="return confirm('¿Desea continuar el borrado de su perfil? Esta acción es irreversible.');" value="Borrar perfil"/>
 				</form>
 				
 				
 
 	</div>
+	
+	<footer class="fixed-bottom navbar-dark bg-danger d-none d-lg-block">
+		<a href="#top" class="ml-3" >
+			<img border="0" alt="Volver arriba." src="img/up.png" width="40" height="40">
+		</a>
+    	<span class="navbar-text float-right mr-3">®IES Alixar, 2020</span>
+    </footer>
+	
 </body>
 
 <script type="text/javascript">

@@ -43,6 +43,7 @@
     </style>
 </head>
 <body>
+<a name="top"></a>
 
 <!--header y barra de navegacion-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-danger sticky-top">
@@ -63,11 +64,8 @@
         </div>
       </nav>
       
-
-	
-	
-	<!-- nuevo -->
-	<div class="container">
+	<!-- reportes -->
+	<div class="container mb-lg-5">
 
 		<%
 		List<Report> li = (List<Report>) session.getAttribute("reports");
@@ -117,5 +115,12 @@
 			
 			<%}%>
 		</div>
+		
+		<footer class="fixed-bottom navbar-dark bg-danger d-none d-lg-block">
+			<a href="#top" class="ml-3" >
+				<img border="0" alt="Volver arriba." src="img/up.png" width="40" height="40">
+			</a>
+	    	<span class="navbar-text float-right mr-3">®IES Alixar, 2020</span>
+    	</footer>
 </body>
 </html>

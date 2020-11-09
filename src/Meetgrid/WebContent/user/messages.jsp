@@ -102,6 +102,7 @@
     </style>
 </head>
 <body>
+<a name="top"></a>
 
 <%  HttpServletRequest httpRequest = (HttpServletRequest) request;
 			String messagesURI = httpRequest.getContextPath() + "/Messages";%>
@@ -164,7 +165,7 @@
 
 <hr>
 	<h5>Mensajes anteriores:</h5>
-     <div class="row ">
+     <div class="row mb-lg-5">
 	<%
 		List<Message> li = (List<Message>) session.getAttribute("messages");
 		for (Message m : li) {
@@ -205,6 +206,12 @@
 	%>
 	</div>
 	
+	<footer class="fixed-bottom navbar-dark bg-danger d-none d-lg-block">
+		<a href="#top" class="ml-3" >
+			<img border="0" alt="Volver arriba." src="img/up.png" width="40" height="40">
+		</a>
+    	<span class="navbar-text float-right mr-3">®IES Alixar, 2020</span>
+    </footer>
 	
 
 </body>

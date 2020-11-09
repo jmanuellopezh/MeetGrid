@@ -54,7 +54,7 @@ public class Report extends HttpServlet {
 		if (!motive.isEmpty()) {//los reportes vacíos no se registran
 		u.report(owner, reported, motive);
 		}
-		response.sendRedirect("user/report.jsp");
+		response.sendRedirect("ReadUsersByFilter");
 			
 	}
 

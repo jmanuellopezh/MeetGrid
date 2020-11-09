@@ -36,6 +36,7 @@ $(document).ready(function(){
 <link rel="icon" type="image/png" href="img/logosmall.png">
 </head>
 <body>
+<a name="top"></a>
 	
 	 <!--header y barra de navegacion-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-danger sticky-top">
@@ -60,7 +61,7 @@ $(document).ready(function(){
 	       <div class="row">
 	       
       <!-- carrusel bootstrap -->
-    			<div class="bd-example mt-5 h-75 col-lg-6 col-m-6 col-12 rounded order-lg-1 order-m-1 order-sm-2">
+    			<div class="bd-example mt-3 h-75 col-lg-6 col-m-6 col-12 rounded order-lg-1 order-m-1 order-sm-2">
   					<div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
 						    <ol class="carousel-indicators">
 						      <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
@@ -107,7 +108,7 @@ $(document).ready(function(){
 	
 				<%  HttpServletRequest httpRequest = (HttpServletRequest) request;
 					String loginURI = httpRequest.getContextPath() + "/Login"; %>
-				<form class= "h-75 mt-5 rounded border border-dark col-lg-6 col-m-6 col-12 d-flex justify-content-center order-lg-2 order-m-2 order-sm-1" action="<%=loginURI %>"  method="post">
+				<form class= "h-75 mt-3 rounded border border-dark col-lg-6 col-m-6 col-12 d-flex justify-content-center order-lg-2 order-m-2 order-sm-1" action="<%=loginURI %>"  method="post">
 					<fieldset>
 						<label class="mt-5"><fmt:message key="login.user" />:</label><br> 
 						<input type="text" name="email"
@@ -127,7 +128,7 @@ $(document).ready(function(){
 			        <div class="alert alert-danger ml-lg-3 mr-lg-3 mt-5 mg-3 col-12 order-3" role="alert"> <p class="text-center"><fmt:message key="login.error" /></p></div>
 			    <%}%>
 			    
-			    <ul class="list-group ml-lg-3 mr-lg-3 mt-5 mg-3 mb-2 col-12 order-4">
+			    <ul class="list-group ml-lg-3 mr-lg-3 mt-5 mg-3 mb-5 col-12 order-4">
 					  <li class="list-group-item list-group-item-dark"><strong>Pautas para la comunidad:</strong> lo siguiente queda prohibido y puede ser motivo de no ingreso, modificación de su perfil o expulsión.</li>
 					  <li class="list-group-item ">Actividades Ilegales (como vender drogas o solicitación sexual)</li>
 					  <li class="list-group-item ">Spam o publicidad</li>
@@ -140,6 +141,13 @@ $(document).ready(function(){
 
 		</div>
 	</div>
+	
+	<footer class="fixed-bottom navbar-dark bg-danger d-none d-lg-block">
+		<a href="#top" class="ml-3" >
+			<img border="0" alt="Volver arriba." src="img/up.png" width="40" height="40">
+		</a>
+    	<span class="navbar-text float-right mr-3">®IES Alixar, 2020</span>
+    </footer>
 </body>
 </html>
 

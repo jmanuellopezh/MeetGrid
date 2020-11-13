@@ -44,9 +44,9 @@ El ser humano es un animal social, necesitamos contacto con otras personas y nut
 
 [Alcance de la aplicación](https://github.com/jmanuellopezh/MeetGrid/blob/master/docs/alcance.md)  
 
-[Carpeta JAVA del proyecto Eclipse](https://github.com/jmanuellopezh/MeetGrid/tree/master/src/MeetGrid)  
+[Carpeta JAVA del proyecto Eclipse](https://github.com/jmanuellopezh/MeetGrid/tree/master/src/Meetgrid)  
 
-[Dump de la BD en SQL](https://github.com/jmanuellopezh/MeetGrid/blob/master/src/MeetGrid20201004.sql)  
+[Dump de la BD en SQL](https://github.com/jmanuellopezh/MeetGrid/blob/master/src/Meetgrid20201109.sql)  
 
 [Esquema ER de la BD](https://github.com/jmanuellopezh/MeetGrid/blob/master/docs/EsquemaEntidadRelacion.png)  
 
@@ -55,6 +55,8 @@ El ser humano es un animal social, necesitamos contacto con otras personas y nut
 [Stack tecnológico](https://github.com/jmanuellopezh/MeetGrid/blob/master/docs/StackTecnologico.jpg)  
 
 [Documento detallando los casos de uso más comunes](https://github.com/jmanuellopezh/MeetGrid/blob/master/docs/CasosDeUsoMeetGrid.pdf)
+
+[Manual de despliegue - versión informal](https://github.com/jmanuellopezh/MeetGrid/blob/master/docs/Manual%20de%20despliegue.pdf)
 
 [Documento detallando los diagramas de actividades](docs/DiagramasDeActividades.pdf)
 

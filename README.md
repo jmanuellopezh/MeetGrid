@@ -46,7 +46,7 @@ El ser humano es un animal social, necesitamos contacto con otras personas y nut
 
 [Carpeta JAVA del proyecto Eclipse](https://github.com/jmanuellopezh/MeetGrid/tree/master/src/Meetgrid)  
 
-[Dump de la BD en SQL](https://github.com/jmanuellopezh/MeetGrid/blob/master/src/Meetgrid20201109.sql)  
+[Dump de la BD en SQL](https://github.com/jmanuellopezh/MeetGrid/blob/master/src/meetgrid-db.sql)  
 
 [Esquema ER de la BD](https://github.com/jmanuellopezh/MeetGrid/blob/master/docs/EsquemaEntidadRelacion.png)  
 

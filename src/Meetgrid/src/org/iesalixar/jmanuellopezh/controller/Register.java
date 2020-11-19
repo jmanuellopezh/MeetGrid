@@ -56,7 +56,7 @@ public class Register extends HttpServlet {
 		
 		
 		if(password.equals(repeatpassword)){//compruebo que los password sean iguales por segunda vez (solo por seguridad, el cliente lo hace por JS)
-		
+			//compruebo que el email no exista ya en la BD. El email es la clave candidata y es UNICO
 			if(us.checkExistingUser(email)==false) {
 				us.create(email, password, role, name, age, gender, area, pic, description);
 				logger.info("Tenemos nuevo usuario en la aplicación!");

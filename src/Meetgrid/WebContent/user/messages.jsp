@@ -182,7 +182,7 @@
 				<%out.println("<strong>Enviado, "+m.getDate()+":</strong> "+m.getContent());%>
 			<%}
 			
-			if (m.getPic()!=null & m.getPic()!=""){%>
+			if (m.getPic()!=null & !m.getPic().equals("")){%>
 						<hr>
 						
 						<!-- Trigger the Modal -->

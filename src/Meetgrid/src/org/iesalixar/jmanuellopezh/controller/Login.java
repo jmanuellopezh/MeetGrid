@@ -44,12 +44,12 @@ public class Login extends HttpServlet {
 			response.addCookie(ck);
 			session.setAttribute("Authorized", "yes");
 			session.setAttribute("username", email);
-			session.setAttribute("Id", user.checkId(email, password));
-			session.setAttribute("profile", user.readUserById(user.checkId(email, password)));//guardo el objeto entero del usuario para visualizacion de sus datos en su administracion de perfil
-			if (user.checkRole(email, password).equals("admin")) {
+			session.setAttribute("Id", user.checkId(email));
+			session.setAttribute("profile", user.readUserById(user.checkId(email)));//guardo el objeto entero del usuario para visualizacion de sus datos en su administracion de perfil
+			if (user.checkRole(email).equals("admin")) {
 				logger.info("An admin has logged in");
 				response.sendRedirect("ReadReports");
-			}else if (user.checkRole(email, password).equals("user")) {
+			}else if (user.checkRole(email).equals("user")) {
 				logger.info("A user has logged in");
 				response.sendRedirect("ReadUsersByFilter");
 			}else {

@@ -27,7 +27,7 @@ CREATE TABLE `block` (
   `owner` int(11) NOT NULL,
   `blocked` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -36,7 +36,7 @@ CREATE TABLE `block` (
 
 LOCK TABLES `block` WRITE;
 /*!40000 ALTER TABLE `block` DISABLE KEYS */;
-INSERT INTO `block` VALUES (23,3,20);
+INSERT INTO `block` VALUES (25,3,16),(26,3,10),(27,3,12);
 /*!40000 ALTER TABLE `block` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -80,7 +80,7 @@ CREATE TABLE `message` (
   `date` datetime DEFAULT NULL,
   `pic` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -89,7 +89,7 @@ CREATE TABLE `message` (
 
 LOCK TABLES `message` WRITE;
 /*!40000 ALTER TABLE `message` DISABLE KEYS */;
-INSERT INTO `message` VALUES (3,3,6,'Hola hola','2020-10-16 00:00:00',NULL),(4,3,6,'Hola hola','2020-10-16 00:00:00',NULL),(5,3,6,'responde!!!','2020-10-16 00:00:00',NULL),(6,3,6,'responde!!!','2020-10-16 00:00:00',NULL),(7,3,6,'responde!','2020-10-16 00:00:00',NULL),(8,3,6,'responde!','2020-10-16 00:00:00',NULL),(9,3,5,'Hola Tifa!','2020-10-16 00:00:00',NULL),(10,3,6,'ey','2020-10-17 00:00:00',NULL),(11,3,4,'ey','2020-10-17 00:00:00',NULL),(12,4,3,'ME HAS BLOQUEADO?','2020-10-20 00:00:00',NULL),(13,3,6,'eo','2020-10-21 00:00:00',NULL),(14,3,6,'ey','2020-10-21 00:00:00',NULL),(15,3,6,'eh uh','2020-10-21 00:00:00',NULL),(16,3,4,'estas?','2020-10-21 00:00:00',NULL),(18,3,4,'eyyy','2020-10-22 00:00:00',NULL),(19,3,4,'ugh\r\n','2020-10-22 00:00:00',NULL),(20,3,4,'uuuuu','2020-10-22 00:00:00',NULL),(21,3,4,'jum','2020-10-22 21:39:23',NULL),(22,3,5,'D:','2020-10-22 21:43:26',NULL),(23,5,3,'PE SA DO','2020-10-22 22:00:17',NULL),(24,3,12,'Buenas!','2020-10-24 21:03:10',NULL),(25,3,6,'hola guapa te gusta el  pimiento','2020-10-27 18:11:19',NULL),(31,3,6,'una foto','2020-11-09 19:07:18','https://firebasestorage.googleapis.com/v0/b/meetgridalixar.appspot.com/o/images%2F1231604945235656?alt=media&token=f7ec7b24-8584-4f4d-b73e-c9f875118ad8'),(32,3,6,'SABES LO QUE TE DIGO? SO FEA','2020-11-09 19:23:37','https://firebasestorage.googleapis.com/v0/b/meetgridalixar.appspot.com/o/images%2F1231604946212288?alt=media&token=62faee8e-67bc-44ce-9d73-4e5974a9362a'),(33,3,6,'EL PEPE','2020-11-09 19:36:29','https://firebasestorage.googleapis.com/v0/b/meetgridalixar.appspot.com/o/messagepics%2F1231604946984835?alt=media&token=23d5268c-3e6a-4c04-8821-0f0a72254534'),(34,6,3,'Yo como sigas enviandome mensajes:','2020-11-09 21:08:03','https://firebasestorage.googleapis.com/v0/b/meetgridalixar.appspot.com/o/messagepics%2F1231604952479475?alt=media&token=8ac42405-7600-4625-975b-fd16e8afc20c');
+INSERT INTO `message` VALUES (31,3,6,'una foto','2020-11-09 19:07:18','https://firebasestorage.googleapis.com/v0/b/meetgridalixar.appspot.com/o/images%2F1231604945235656?alt=media&token=f7ec7b24-8584-4f4d-b73e-c9f875118ad8'),(32,3,6,'SABES LO QUE TE DIGO? SO FEA','2020-11-09 19:23:37','https://firebasestorage.googleapis.com/v0/b/meetgridalixar.appspot.com/o/images%2F1231604946212288?alt=media&token=62faee8e-67bc-44ce-9d73-4e5974a9362a'),(33,3,6,'EL PEPE','2020-11-09 19:36:29','https://firebasestorage.googleapis.com/v0/b/meetgridalixar.appspot.com/o/messagepics%2F1231604946984835?alt=media&token=23d5268c-3e6a-4c04-8821-0f0a72254534'),(34,6,3,'Yo como sigas enviandome mensajes:','2020-11-09 21:08:03','https://firebasestorage.googleapis.com/v0/b/meetgridalixar.appspot.com/o/messagepics%2F1231604952479475?alt=media&token=8ac42405-7600-4625-975b-fd16e8afc20c'),(35,3,17,'Hola','2020-11-18 12:54:23',''),(36,3,6,'Hola','2020-11-18 19:20:01',''),(37,3,5,'Hola Tifa!','2020-11-18 20:01:54','');
 /*!40000 ALTER TABLE `message` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -107,7 +107,7 @@ CREATE TABLE `report` (
   `motive` varchar(45) DEFAULT NULL,
   `date` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -116,7 +116,7 @@ CREATE TABLE `report` (
 
 LOCK TABLES `report` WRITE;
 /*!40000 ALTER TABLE `report` DISABLE KEYS */;
-INSERT INTO `report` VALUES (10,3,4,'Cloud es emo.','2020-10-22 21:40:55'),(20,3,12,'Dice palabrotas.','2020-11-04 00:20:54'),(23,3,5,'Me ha pegao.','2020-11-09 22:40:25'),(24,3,4,'Su espada es ridiculamente grande.','2020-11-09 22:41:12'),(25,3,17,'Amenaza de muerte.','2020-11-09 22:43:04');
+INSERT INTO `report` VALUES (10,3,4,'Cloud es emo.','2020-10-22 21:40:55'),(20,3,12,'Dice palabrotas.','2020-11-04 00:20:54'),(23,3,5,'Me ha pegao.','2020-11-09 22:40:25'),(25,3,17,'Amenaza de muerte.','2020-11-09 22:43:04'),(26,3,16,'Es un ESPÍA','2020-11-19 23:36:20');
 /*!40000 ALTER TABLE `report` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -154,7 +154,7 @@ DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `email` varchar(45) NOT NULL,
-  `password` varchar(10) NOT NULL,
+  `password` varchar(100) NOT NULL,
   `role` int(1) NOT NULL,
   `name` varchar(15) DEFAULT NULL,
   `age` int(3) DEFAULT NULL,
@@ -163,7 +163,7 @@ CREATE TABLE `user` (
   `pic` varchar(200) DEFAULT NULL,
   `description` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -172,7 +172,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'jesus@meetgrid.com','leonhart',1,'Jesus',NULL,NULL,NULL,NULL,NULL),(2,'chema@meetgrid.com','silverhand',1,'Chema',NULL,NULL,NULL,NULL,NULL),(3,'prueba','prueba',2,'Prueba',31,'H','Sevilla','https://firebasestorage.googleapis.com/v0/b/meetgridalixar.appspot.com/o/images%2F1231604958342628?alt=media&token=e108b2c0-cc95-486d-8a44-1468297bd251','<p><b>EL VERDADERO ADMIN</b></p><p><b><br></b></p><p><b><br></b></p><p style=\"text-align: right; \">...o no.</p>'),(4,'cloud@meetgrid.com','AVALANCHA',2,'Cloud',21,'H','Madrid','https://static1-www.millenium.gg/articles/3/11/01/3/@/124281-cloud-avatar3-full-1.jpg','Omnilátigo.'),(5,'tifa@meetgrid.com','7Cielo',2,'Tifa',23,'M','Madrid','https://static1-www.millenium.gg/articles/3/11/01/3/@/124311-tifa-avatar1-full-1.jpg','Shiva.'),(6,'aeris@meetgrid.com','Florista7',2,'Aeris',25,'M','Madrid','https://static1-www.millenium.gg/articles/3/11/01/3/@/124323-aerith-avatar1-full-1.jpg','Anciana.'),(7,'admin','admin',1,'AdminPrueba',NULL,NULL,NULL,NULL,NULL),(10,'caith@meetgrid.com','Shinra',2,'Cait_Sith',30,'N','Sevilla','https://dissidiadb.com/static/img/cait_sith.c822d00.png','Shhhhh!'),(12,'barret@meetgrid.com','Marlene',2,'Barret',32,'H','Teruel','https://static1-www.millenium.gg/articles/3/11/01/3/@/124302-barret-avatar2-full-1.jpg','Tengo una hija.'),(16,'carlos@meetgrid.com','Brasil',2,'Carlos_Oliveira',25,'H','Cuenca','https://firebasestorage.googleapis.com/v0/b/meetgridalixar.appspot.com/o/images%2F1231604701972190?alt=media&token=c3aeb069-73dc-478f-b588-b6f2a78a7a17','<p>NO SOY <b>ESPIA</b></p>'),(17,'jill@meetgrid.com','Raccoon',2,'Jill_Valentine',23,'M','Cuenca','https://pbs.twimg.com/media/EYDkSljXQAcIUHk.jpg','STARS'),(18,'leon@meetgrid.com','Police',2,'Leon_Kennedy',21,'H','Cuenca','https://pbs.twimg.com/profile_images/1107340557943259138/o5dHqbA0_400x400.jpg','RPD'),(19,'claire@meetgrid.com','Harley98',2,'Claire_Redfield',19,'M','Cuenca','https://movieleatherjackets.com/wp-content/uploads/2020/01/Resident-Evil-2-Claire-Redfield-Jacket02.jpg','<p>-Motos.</p><p>-Activismo.</p><p>-Chris si me lees, <b><u>contacta conmigo.</u></b></p>'),(20,'pruebaimagen@meetgrid.com','123456',2,'PruebaImagen',20,'N','Córdoba','https://firebasestorage.googleapis.com/v0/b/meetgridalixar.appspot.com/o/images%2F1231604702098991?alt=media&token=6afbf321-a0d5-4cd1-9479-f4788a35bd90','<p>Te lo modifico</p>');
+INSERT INTO `user` VALUES (1,'admin','$2a$10$6ssNkpxsNlw2YqzaDDB6P.Z.t2zs9gD0Lnx55pMhbpzWD6OfA9B56',1,'AdminPrueba',30,'N','Sevilla',NULL,NULL),(3,'prueba','$2a$10$z95UfdXEft5DTKZNklhnwe53/Hbb6IATXHtABVc3GHASQBbhw21DC',2,'User',31,'H','Sevilla','https://firebasestorage.googleapis.com/v0/b/meetgridalixar.appspot.com/o/images%2F1231604958342628?alt=media&token=e108b2c0-cc95-486d-8a44-1468297bd251','<p><b>EL VERDADERO ADMIN</b></p><p><b><br></b></p><p><b><br></b></p><p style=\"text-align: right; \">...o no.</p>'),(4,'cloud@meetgrid.com','$2a$10$HHWIfgGzue38XtheN7stwOvSYotnR.PU4RXA78YXxul8GSL3GG4ju',2,'Cloud',21,'H','Madrid','https://static1-www.millenium.gg/articles/3/11/01/3/@/124281-cloud-avatar3-full-1.jpg','Omnilátigo.'),(5,'tifa@meetgrid.com','$2a$10$w05m.EdERa5VAaZvSTrHJeQ5z.rM0iOCkqvtSrgK9IlqvcGXP87s6',2,'Tifa',23,'M','Madrid','https://static1-www.millenium.gg/articles/3/11/01/3/@/124311-tifa-avatar1-full-1.jpg','Shiva.'),(6,'aeris@meetgrid.com','$2a$10$WOc4/wHMQh2gHVzhtODL1.kFNfrNWLhiTs3Eexb4V3ww2D8HTCsX2',2,'Aeris',25,'M','Madrid','https://static1-www.millenium.gg/articles/3/11/01/3/@/124323-aerith-avatar1-full-1.jpg','Anciana.'),(10,'caith@meetgrid.com','$2a$10$mKFE/kdD09dT0j82/ZCrCevpgdZK2PxQK64Rho14aF9iRLw1g0eKu',2,'Cait_Sith',30,'N','Sevilla','https://dissidiadb.com/static/img/cait_sith.c822d00.png','Shhhhh!'),(12,'barret@meetgrid.com','$2a$10$tfmz0VFeYlKJkyU1jVUNJ.Nxb2MxqJzQJ3Fwvq8ede4iSGXZt2P5S',2,'Barret',32,'H','Teruel','https://static1-www.millenium.gg/articles/3/11/01/3/@/124302-barret-avatar2-full-1.jpg','Tengo una hija.'),(16,'carlos@meetgrid.com','$2a$10$ArLsCwmISlPOKYDxRfljDOru6ENHBF00jqy7ugORG87VQydJlxOea',2,'Carlos_Oliveira',25,'H','Cuenca','https://firebasestorage.googleapis.com/v0/b/meetgridalixar.appspot.com/o/images%2F1231604701972190?alt=media&token=c3aeb069-73dc-478f-b588-b6f2a78a7a17','<p>NO SOY <b>ESPIA</b></p>'),(17,'jill@meetgrid.com','$2a$10$jJMcWVQ4UAH19Au.SQLkTezmniTUTv99mBQ9MPXbMwH58kHtQsGUW',2,'Jill_Valentine',23,'M','Cuenca','https://pbs.twimg.com/media/EYDkSljXQAcIUHk.jpg','STARS'),(18,'leon@meetgrid.com','$2a$10$FrOYCuh7ezgh27yk4edthOW8HfrpiEw8Dx0ULAmO.hCoYqw8jxeTK',2,'Leon_Kennedy',21,'H','Cuenca','https://pbs.twimg.com/profile_images/1107340557943259138/o5dHqbA0_400x400.jpg','RPD'),(19,'claire@meetgrid.com','$2a$10$Hi7K0QzV44pzT7eHgGCYv.EiTkRGhKNgBlFDgLTXGmhM1oJpA29Q.',2,'Claire_Redfield',19,'M','Cuenca','https://movieleatherjackets.com/wp-content/uploads/2020/01/Resident-Evil-2-Claire-Redfield-Jacket02.jpg','<p>-Motos.</p><p>-Activismo.</p><p>-Chris si me lees, <b><u>contacta conmigo.</u></b></p>');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -185,4 +185,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-11-18 12:39:55
+-- Dump completed on 2020-11-19 23:40:39

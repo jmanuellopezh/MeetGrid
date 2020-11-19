@@ -9,22 +9,32 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.iesalixar.jmanuellopezh.helper.ConnectionDB;
+import org.mindrot.jbcrypt.BCrypt;
 
 public class UserDAOImpl implements UserDAO {
 	
 	//REVISA SI EL USUARIO CUYO EMAIL Y PASS SE DA EN LOGIN EXISTE O NO EN LA BD
 	@Override
 	public boolean checkUser(String email, String password) {
+		
+		String hashed = null;
 
 		boolean found = false;
 		Connection c = ConnectionDB.conectarMySQL();
 		try {
+			//localizo el usuario por su clave candidata email y cojo su password
 			PreparedStatement stmt = c
-					.prepareStatement("select email, password from user where email=? and password=?");
+					.prepareStatement("select password from user where email=?");
 			stmt.setString(1, email);
-			stmt.setString(2, password);
+
 			ResultSet rs = stmt.executeQuery();
-			found = rs.next();
+			while (rs.next())
+				//guardo la contraseña encriptada
+				hashed = rs.getString(1);
+
+			rs.close();
+			//compruebo que el password introducido coincida con el encriptado, desencriptandolo
+			found = (BCrypt.checkpw(password, hashed));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -34,13 +44,15 @@ public class UserDAOImpl implements UserDAO {
 	
 	//DEVUELVE EL VALOR DE LA ID PARA EL USUARIO QUE HA INICIADO SESION. PUEDE SER VALIOSO PARA GUARDARLO EN SESSION
 	@Override
-	public String checkId(String email, String password) {
+	public String checkId(String email) {
+		
+
 		Connection c = ConnectionDB.conectarMySQL();
 		String id = null;
 		try {
-			PreparedStatement stmt = c.prepareStatement("select id from user where email=? and password=?");
+			PreparedStatement stmt = c.prepareStatement("select id from user where email=?");
 			stmt.setString(1, email);
-			stmt.setString(2, password);
+
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next())
 				id = rs.getString(1);
@@ -49,19 +61,23 @@ public class UserDAOImpl implements UserDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		System.out.println("El id del usuario que ha iniciado sesión es "+id);
-		return id;
+
+			return id;
+	
 	}
 
 	//VERIFICA EL ROL DEL USUARIO Y DEVUELVE EL VALOR DE ESTE
 	@Override
-	public String checkRole(String email, String password) {
+	public String checkRole(String email) {
+		
+
+		
 		Connection c = ConnectionDB.conectarMySQL();
 		String role = null;
 		try {
-			PreparedStatement stmt = c.prepareStatement("select role.type from role inner join user on user.role = role.id where user.email=? and user.password=?");
+			PreparedStatement stmt = c.prepareStatement("select role.type from role inner join user on user.role = role.id where user.email=?");
 			stmt.setString(1, email);
-			stmt.setString(2, password);
+
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next())
 				role = rs.getString(1);
@@ -105,10 +121,15 @@ public class UserDAOImpl implements UserDAO {
 	//CREA USUARIO
 	@Override
 	public void create(String email, String password, String role, String name, String age, String gender, String area, String pic, String description) {
+		
+		//encripto la contraseña
+		String hashed = BCrypt.hashpw(password, BCrypt.gensalt());
+		System.out.println(hashed);
+		
 		try {
 			Connection c = ConnectionDB.conectarMySQL();
 			PreparedStatement stmt = c.prepareStatement(
-					"INSERT INTO user (email, password, role, name, age, gender, area, pic, description) VALUES ('" + email + "','" + password + "','"+ role +"','"+ name + "','" + age + "','"+ gender+"','"+ area + "','"+ pic+"','"+ description + "')");
+					"INSERT INTO user (email, password, role, name, age, gender, area, pic, description) VALUES ('" + email + "','" + hashed + "','"+ role +"','"+ name + "','" + age + "','"+ gender+"','"+ area + "','"+ pic+"','"+ description + "')");
 
 			stmt.executeUpdate();
 
@@ -408,8 +429,12 @@ public class UserDAOImpl implements UserDAO {
 						Statement stmt = con.createStatement();
 						
 						if (password != null && !password.isEmpty()) {
-							stmt.execute(	"UPDATE user SET password = '" +password+ "' WHERE id = "+id+"");
-							System.out.println(password);
+							
+							//encripto la contraseña
+							String hashed = BCrypt.hashpw(password, BCrypt.gensalt());
+							
+							stmt.execute(	"UPDATE user SET password = '" +hashed+ "' WHERE id = "+id+"");
+
 						}
 						if (name != null && !name.isEmpty()) {
 							stmt.execute(	"UPDATE user SET name = '" +name+ "' WHERE id = "+id+"");

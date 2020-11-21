@@ -148,7 +148,7 @@
 						<textarea class="form-control" type="text" name="description" id="summernote"></textarea>
 						
 						<br>
-						<label><input type="checkbox" class="form-check-label" required> <fmt:message key="register.privacy" /></label>
+						<label><input type="checkbox" class="form-check-label" id ="check" required> <fmt:message key="register.privacy" /></label>
 						<br>
 						
 						<button class="btn btn-danger col-12 mt-2 mb-2" onclick="compruebaTodo()" type="submit" value="register">Registrarse</button>
@@ -342,17 +342,9 @@
         
     }
     
-    function compruebaPrivacidad() {
-    	  // Get the checkbox
-    	  var checkBox = document.getElementById("check");
-
-    	  // If the checkbox is checked, display the output text
-    	  if (checkBox.checked == false){
-    		  alert("Error: Acepte la política de privacidad para registrarse en la web.");
-    	  }
-    	}
-
     function compruebaTodo(){
+    	var checkBox = document.getElementById("check");
+    	
         compruebaUsuarioFin();
         compruebaEmailFin();
         compruebaEdadFin();
@@ -360,11 +352,9 @@
         if (compruebaPassFin()){
             compruebaPassOtraFin();
         }
-        
-        compruebaPrivacidad();
 
-        if (primerError==''){
-        	confirm("Usuario registrado. Inicie sesión con su email y contraseña.");
+        if (primerError=='' && checkBox.checked==true){
+        	alert("Usuario registrado. Inicie sesión con su email y contraseña.");
         }else{
         	//con esta línea volvemos al primer error
             document.getElementById(primerError).scrollIntoView({block: 'start', behavior: 'smooth'});

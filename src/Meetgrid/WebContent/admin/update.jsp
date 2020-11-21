@@ -63,7 +63,15 @@
       <h3 class="mt-3">Datos actuales:</h3>
         <div class="row mt-3 rounded border border-dark">
 
-                <img src="<%=u.getPic() %>" alt="<%=u.getName() %>" class="img img-responsive full-width mh-100 mt-2 ml-2 mb-2 rounded col-lg-5 col-m-4 col-sm-12" />
+                <%if (u.getPic()!=null & !u.getPic().equals("")){ %>
+        		<img src="<%=u.getPic() %>" alt="<%=u.getName() %>" class="img img-responsive full-width mh-100 mt-2 ml-2 mb-2 rounded col-lg-5 col-m-4 col-sm-12" />
+        		
+
+                <%}else{ %>
+                <img src="img/userplaceholder.png" alt="Sin foto" class="img img-responsive full-width mh-100 mt-2 ml-2 mb-2 rounded col-lg-5 col-m-4 col-sm-12" />
+
+
+				<%} %>
 
                 <div class="col-lg-6 col-m-5 col-sm-12">
                     <h1><%=u.getName() %></h1>

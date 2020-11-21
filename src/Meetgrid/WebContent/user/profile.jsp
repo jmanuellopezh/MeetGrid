@@ -13,8 +13,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css" type="text/css" media=screen>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <LINK REL=StyleSheet HREF="custom.css" TYPE="text/css" MEDIA=screen>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
@@ -31,7 +31,7 @@
 
 <!--header y barra de navegacion-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-danger sticky-top">
-        <img src="img/logosmall.png" width="40" height="40" class="d-inline-block align-top" alt="MeetGrid">
+        <img src="img/logo.png" width="40" height="40" class="d-inline-block align-top" alt="MeetGrid" id="icon">
         <a class="navbar-brand" href="ReadUsersByFilter">MeetGrid</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -47,6 +47,9 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="Block">Bloqueados</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="LastMessages">Mensajes recientes</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="UpdateUser">Ajustes de perfil</a>
@@ -68,9 +71,16 @@
 
       <div class="container">
         <div class="row ml-3 mr-3 mt-3 rounded border border-dark">
+        
+        		<%if (u.getPic()!=null & !u.getPic().equals("")){ %>
+        		<img src="<%=u.getPic() %>" alt="<%=u.getName() %>" class="img img-responsive full-width mh-100 mt-2 ml-2 mb-2 rounded col-lg-5 col-m-4 col-sm-12" />
+        		
 
-                <img src="<%=u.getPic() %>" alt="<%=u.getName() %>" class="img img-responsive full-width mh-100 mt-2 ml-2 mb-2 rounded col-lg-5 col-m-4 col-sm-12" />
+                <%}else{ %>
+                <img src="img/userplaceholder.png" alt="Sin foto" class="img img-responsive full-width mh-100 mt-2 ml-2 mb-2 rounded col-lg-5 col-m-4 col-sm-12" />
 
+
+				<%} %>
                 <div class="col-lg-6 col-m-5 col-sm-12">
                     <h1><%=u.getName() %></h1>
                     <cite><%=u.getArea() %></cite>

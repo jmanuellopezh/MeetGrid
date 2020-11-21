@@ -10,96 +10,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <LINK REL=StyleSheet HREF="custom.css" TYPE="text/css" MEDIA=screen>
+    <link rel="stylesheet" href="styles.css" type="text/css" media=screen>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <title>MeetGrid - Mensajes</title>
     <link rel="icon" type="image/png" href="img/logosmall.png">
-    
-    <style>
-    
-			    /* Estilos y animacion solo y exclusivamente para el modal. Como solo los uso en esta vista, los pongo en este jsp */
-			#myImg {
-			  border-radius: 5px;
-			  cursor: pointer;
-			  transition: 0.3s;
-			}
-			
-			#myImg:hover {opacity: 0.7;}
-			
-			/* The Modal (background) */
-			.modal {
-			  display: none; /* Hidden by default */
-			  position: fixed; /* Stay in place */
-			  z-index: 1; /* Sit on top */
-			  padding-top: 100px; /* Location of the box */
-			  left: 0;
-			  top: 0;
-			  width: 100%; /* Full width */
-			  height: 100%; /* Full height */
-			  overflow: auto; /* Enable scroll if needed */
-			  background-color: rgb(0,0,0); /* Fallback color */
-			  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
-			}
-			
-			/* Modal Content (Image) */
-			.modal-content {
-			  margin: auto;
-			  display: block;
-			  width: 80%;
-			  max-width: 700px;
-			}
-			
-			/* Caption of Modal Image (Image Text) - Same Width as the Image */
-			#caption {
-			  margin: auto;
-			  display: block;
-			  width: 80%;
-			  max-width: 700px;
-			  text-align: center;
-			  color: #ccc;
-			  padding: 10px 0;
-			  height: 150px;
-			}
-			
-			/* Add Animation - Zoom in the Modal */
-			.modal-content, #caption {
-			  animation-name: zoom;
-			  animation-duration: 0.6s;
-			}
-			
-			@keyframes zoom {
-			  from {transform:scale(0)}
-			  to {transform:scale(1)}
-			}
-			
-			/* The Close Button */
-			.close {
-			  position: absolute;
-			  top: 15px;
-			  right: 35px;
-			  color: #f1f1f1;
-			  font-size: 40px;
-			  font-weight: bold;
-			  transition: 0.3s;
-			}
-			
-			.close:hover,
-			.close:focus {
-			  color: #bbb;
-			  text-decoration: none;
-			  cursor: pointer;
-			}
-			
-			/* 100% Image Width on Smaller Screens */
-			@media only screen and (max-width: 700px){
-			  .modal-content {
-			    width: 100%;
-			  }
-			}
-    
-    </style>
+   
 </head>
 <body>
 <a name="top"></a>
@@ -109,7 +26,7 @@
 
 <!--header y barra de navegacion-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-danger sticky-top">
-        <img src="img/logosmall.png" width="40" height="40" class="d-inline-block align-top" alt="MeetGrid">
+        <img src="img/logo.png" width="40" height="40" class="d-inline-block align-top" alt="MeetGrid" id="icon">
         <a class="navbar-brand" href="ReadUsersByFilter">MeetGrid</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -125,6 +42,9 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="Block">Bloqueados</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="LastMessages">Mensajes recientes</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="UpdateUser">Ajustes de perfil</a>

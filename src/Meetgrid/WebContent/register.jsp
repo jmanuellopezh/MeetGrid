@@ -8,12 +8,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="styles.css" type="text/css" media=screen>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-<LINK REL=StyleSheet HREF="custom.css" TYPE="text/css" MEDIA=screen>
+
 <!-- importo el richtext compatible con Bootstrap para el apartado "Sobre mí" -->
 	<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
 	<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
@@ -26,7 +27,7 @@
 	
 	 <!--header y barra de navegacion-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-danger sticky-top">
-        <img src="img/logosmall.png" width="40" height="40" class="d-inline-block align-top" alt="MeetGrid">
+        <img src="img/logo.png" width="40" height="40" class="d-inline-block align-top" alt="MeetGrid" id="icon">
         <a class="navbar-brand" >MeetGrid</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -145,6 +146,10 @@
 						<br> 
 						<label>Sobre mi:</label>
 						<textarea class="form-control" type="text" name="description" id="summernote"></textarea>
+						
+						<br>
+						<label><input type="checkbox" class="form-check-label" required> <fmt:message key="register.privacy" /></label>
+						<br>
 						
 						<button class="btn btn-danger col-12 mt-2 mb-2" onclick="compruebaTodo()" type="submit" value="register">Registrarse</button>
 					</fieldset>
@@ -329,13 +334,23 @@
         if (!expr.test(usuario) && usuario != "") {
             document.getElementById("edad").value=("");
 
-            alert("Error: La edad debe ser mínimo 18 años, sólo se admiten números");
+            alert("Error: La edad debe ser mínimo 18 años, sólo se admiten números.");
             if (primerError==''){
                 primerError="edad";
             }
         }
         
     }
+    
+    function compruebaPrivacidad() {
+    	  // Get the checkbox
+    	  var checkBox = document.getElementById("check");
+
+    	  // If the checkbox is checked, display the output text
+    	  if (checkBox.checked == false){
+    		  alert("Error: Acepte la política de privacidad para registrarse en la web.");
+    	  }
+    	}
 
     function compruebaTodo(){
         compruebaUsuarioFin();
@@ -345,6 +360,8 @@
         if (compruebaPassFin()){
             compruebaPassOtraFin();
         }
+        
+        compruebaPrivacidad();
 
         if (primerError==''){
         	confirm("Usuario registrado. Inicie sesión con su email y contraseña.");

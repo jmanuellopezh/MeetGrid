@@ -56,5 +56,48 @@ public class MessageDAOImpl implements MessageDAO{
 			
 
 		}
+		
+		//devolver mensajes recientes, 48h
+		public static List<Message> readLastMessages(String receiver) {
+
+			List<Message> messages = null;
+			try {
+				Connection con = ConnectionDB.conectarMySQL();
+				Statement s = con.createStatement();
+				ResultSet rs = s.executeQuery("select * from message where receiver = "+receiver+" && date > DATE_SUB(CURDATE(), INTERVAL 2 DAY)"); 
+				messages = new ArrayList<Message>();
+
+				while (rs.next()) {
+					Message m = new Message(rs.getString("id"), rs.getString("sender"),rs.getString("receiver"),rs.getString("content"), rs.getString("pic"),rs.getString("date"));
+					messages.add(m);
+
+				}
+				rs.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return messages;
+		}
+		
+				public static String readSenderName(String sender) {
+					
+					String name = null;
+
+					try {
+						Connection con = ConnectionDB.conectarMySQL();
+						PreparedStatement stmt = con.prepareStatement("select user.name from user inner join message on message.sender = user.id where message.sender=?"); 
+						stmt.setString(1, sender);
+						ResultSet rs = stmt.executeQuery();
+						while (rs.next())
+							name = rs.getString(1);
+
+						rs.close();
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					return name;
+				}
 
 }

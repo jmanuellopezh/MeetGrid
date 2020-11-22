@@ -59,7 +59,7 @@
 
       <!--barra con los filtros-->
       <nav class="navbar navbar-expand-lg navbar-light bg-light ">
-        <a class="navbar-brand">Filtros:</a>
+        <h5>Filtros:</h5>
         
           
           <form class="form-inline mx-auto" action="<%=gridURI %>"  method="post">

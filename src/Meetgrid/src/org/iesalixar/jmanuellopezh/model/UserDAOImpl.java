@@ -124,7 +124,6 @@ public class UserDAOImpl implements UserDAO {
 		
 		//encripto la contraseña
 		String hashed = BCrypt.hashpw(password, BCrypt.gensalt());
-		System.out.println(hashed);
 		
 		try {
 			Connection c = ConnectionDB.conectarMySQL();

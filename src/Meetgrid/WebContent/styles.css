@@ -15,6 +15,17 @@
       transform: translateX(-50%) translateY(-50%);
 }
 
+/*font del logo del nav*/
+
+@font-face {
+      font-family: "Pacifico";
+      src: url("fonts/Pacifico-Regular.ttf");
+    }
+
+.navbar-brand {
+	font-family: 'Pacifico', cursive;
+}
+
  /* Estilos y animacion solo y exclusivamente para el modal. */
 			#myImg {
 			  border-radius: 5px;

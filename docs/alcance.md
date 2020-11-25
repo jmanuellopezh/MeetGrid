@@ -7,7 +7,7 @@ MeetGrid una aplicación para conocer a otras personas. Una red social con el ob
 Esta aplicación permitirá registrarse a los usuarios indicando su email (key candidata), nombre de usuario (puede haber repetidos), contraseña, edad, género (opciones en desplegable), localidad (opciones en desplegable), foto de perfil y un campo de texto para que el usuario escriba libremente sobre sí mismo (gustos, hobbies, qué busca en la aplicación...). También podrán modificar su usuario una vez creado.
 
 
-Al logarse, aparecerá un pop up con recomendaciones para tener citas respetando las medidas contra la COVID-19 y llegaremos a la pantalla central de la aplicación, una rejilla de perfiles. Habrá un filtro de búsqueda para afinar los resultados según edad, zona y género.
+Al logarse llegaremos a la pantalla central de la aplicación, una rejilla de perfiles. Habrá un filtro de búsqueda para afinar los resultados según edad, zona y género.
 
 
 Se podrá enviar mensajes a personas que aparezcan en tus vistas, bloquear a otros usuarios libremente y podrán enviarte mensajes, reportar usuarios al superusuario y tener usuarios favoritos con su propia vista exenta de filtros.

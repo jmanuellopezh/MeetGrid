@@ -41,7 +41,7 @@ public class Logout extends HttpServlet {
     		response.addCookie(ck);
         }
         response.sendRedirect(request.getContextPath() + "/login.jsp");
-        logger.info("Pa tu casa.");
+        logger.info("El usuario ha cerrado sesión y sus cookies han sido borradas.");
     
 	}
 

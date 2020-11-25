@@ -51,20 +51,21 @@
 			
 				<form class= "mt-3 mb-2 rounded border border-dark form-row" action="./Register" method="post" id="form">
 					<fieldset class="col-12">
-						<label>Email</label>
+					<strong class="float-right">*Campos requeridos.</strong>
+						<label>Email*</label>
 						<input class="form-control" type="text" name="email" id="email" required onblur="compruebaEmail()" placeholder="Formato email: usuario@dominio.com/es.org...">
-						<label>Contraseña</label>
+						<label>Contraseña*</label>
 						<input class="form-control" type="password" name="password" id="pass" required onblur="compruebaPass()" placeholder="Puede contener numeros y letras, min 6 max 10 caracteres. Una vez introduzca uno valido se generara el campo para repetir contraseña.">
 						<div id="otravez"></div>
 						
-						<label>Nombre de usuario</label>
-						<input class="form-control" type="text" name="name" id="usuario" required onblur="compruebaUsuario()" placeholder="Letras mayusculas, minusculas y numeros entre 1 y 15 caracteres">
-						<label>Edad</label>
+						<label>Nombre de usuario*</label>
+						<input class="form-control" type="text" name="name" id="usuario" required onblur="compruebaUsuario()" placeholder="Letras mayusculas, minusculas y numeros entre 1 y 15 caracteres, sin espacios.">
+						<label>Edad*</label>
 						<input class="form-control" type="text" name="age" id="edad" required onblur="compruebaEdad()" placeholder="La edad debe ser mínimo 18 años, sólo se admiten números">
 						
 						<div class="input-group mt-3">
 			                    <div class="input-group-prepend">
-			                      <label class="input-group-text" for="inputGroupSelect01">Género</label>
+			                      <label class="input-group-text" for="inputGroupSelect01">Género*</label>
 			                    </div>
 			                    <select class="custom-select" id="inputGroupSelect01" name="gender" required>
 			                      <option selected disabled>Selecciona...</option>
@@ -77,7 +78,7 @@
 						
 						<div class="input-group mt-3">
 			                    <div class="input-group-prepend">
-			                      <label class="input-group-text" for="inputGroupSelect02">Provincia</label>
+			                      <label class="input-group-text" for="inputGroupSelect02">Provincia*</label>
 			                    </div>
 			                    <select class="custom-select" id="inputGroupSelect01" name="area" required>
 			                      <option selected disabled>Selecciona...</option>
@@ -150,6 +151,7 @@
 						<br>
 						<label><input type="checkbox" class="form-check-label" id ="check" required> <fmt:message key="register.privacy" /></label>
 						<br>
+						
 						
 						<button class="btn btn-danger col-12 mt-2 mb-2" onclick="compruebaTodo()" type="submit" value="register">Registrarse</button>
 					</fieldset>

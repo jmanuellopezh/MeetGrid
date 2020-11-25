@@ -16,7 +16,7 @@ public class UserDAOImpl implements UserDAO {
 	//REVISA SI EL USUARIO CUYO EMAIL Y PASS SE DA EN LOGIN EXISTE O NO EN LA BD
 	@Override
 	public boolean checkUser(String email, String password) {
-		
+		UserDAOImpl userdao = new UserDAOImpl();
 		String hashed = null;
 
 		boolean found = false;
@@ -34,7 +34,11 @@ public class UserDAOImpl implements UserDAO {
 
 			rs.close();
 			//compruebo que el password introducido coincida con el encriptado, desencriptandolo
-			found = (BCrypt.checkpw(password, hashed));
+			
+			if (userdao.checkExistingUser(email)) {
+				found = (BCrypt.checkpw(password, hashed));
+			}
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

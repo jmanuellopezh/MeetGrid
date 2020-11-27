@@ -66,4 +66,4 @@ El ser humano es un animal social, necesitamos contacto con otras personas y nut
 
 [Manual del usuario](https://github.com/jmanuellopezh/MeetGrid/blob/master/docs/MeetGrid_manualUsuario-Administrador_proyecto_DAW.pdf)
 
-[Manual de despliegue](https://github.com/jmanuellopezh/MeetGrid/blob/master/docs/MeetGrid_manualDespliegue_proyecto_DAW.pdf)
+[Manual de instalación y despliegue](https://github.com/jmanuellopezh/MeetGrid/blob/master/docs/MeetGrid_manualDespliegue_proyecto_DAW.pdf)

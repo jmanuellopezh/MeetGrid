@@ -61,9 +61,9 @@
       </div>
  
       <form class="row ml-3 mr-3 mt-2 " method ="get" action=<%=updateURI %>>
-			<input class="form-control offset-lg-5 col-lg-1 col-sm-6 col-m-4" type="text" name="visit" placeholder="Introduzca ID">
+			<input class="form-control offset-lg-4 col-lg-2 col-sm-6 col-m-4" type="text" name="visit" placeholder="Introduzca ID">
 			
-			<input class="btn btn-danger col-lg-1 col-sm-6 col-m-4 offset-m-2" type="submit" value="Ver/Modificar"/>
+			<input class="btn btn-danger col-lg-2 col-sm-6 col-m-4 offset-m-2" type="submit" value="Ver/Modificar"/>
 	</form>
       
  

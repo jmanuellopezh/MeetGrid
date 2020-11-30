@@ -94,7 +94,7 @@ public class UserDAOImpl implements UserDAO {
 		return role;
 	}
 	
-	//LEE LOS USUARIOS CON ROL USER DE NUESTRA BD (UTIL PARA EL GRID, NO LO USO EN ESTA VERSIÓN)
+	//LEE LOS USUARIOS CON ROL USER DE NUESTRA BD, USO EN LA LISTA DE ADMIN
 
 	public static List<User> readUser() {
 
@@ -102,7 +102,7 @@ public class UserDAOImpl implements UserDAO {
 		try {
 			Connection con = ConnectionDB.conectarMySQL();
 			Statement s = con.createStatement();
-			ResultSet rs = s.executeQuery("select * from user where role = 1"); //UTIL REVISAR SIN INNER JOIN?
+			ResultSet rs = s.executeQuery("select * from user where role = 2"); 
 			
 			users = new ArrayList<User>();
 
@@ -141,6 +141,26 @@ public class UserDAOImpl implements UserDAO {
 		}
 
 	}
+	
+	//CREA ADMIN
+		
+		public void createAdmin(String email, String password, String name) {
+			
+			//encripto la contraseña
+			String hashed = BCrypt.hashpw(password, BCrypt.gensalt());
+			
+			try {
+				Connection c = ConnectionDB.conectarMySQL();
+				PreparedStatement stmt = c.prepareStatement(
+						"INSERT INTO user (email, password, role, name) VALUES ('" + email + "','" + hashed + "', 1 ,'"+ name +"')");
+
+				stmt.executeUpdate();
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+		}
 	
 	//DEVUELVE SI UN USUARIO YA EXISTE O NO, EVALUANDO EL EMAIL
 	@Override

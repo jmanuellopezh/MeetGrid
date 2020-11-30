@@ -35,12 +35,21 @@ public class UpdateAdmin extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 try {
-	
+			RequestDispatcher rd =null;
 			UserDAOImpl user = new UserDAOImpl();	    
 			User u = user.readUserById(request.getParameter("visit"));
 			HttpSession session = request.getSession();
-			session.setAttribute("visit", u);
-		    RequestDispatcher rd=request.getRequestDispatcher("admin/update.jsp");  
+			
+			if (request.getParameter("visit") != null) {
+				session.setAttribute("visit", u);
+				if (u != null && u.getRole().equals("2")) {
+			    rd=request.getRequestDispatcher("admin/update.jsp");  
+				}else {
+				rd=request.getRequestDispatcher("admin/readall.jsp");  
+				}
+			}else {
+				rd=request.getRequestDispatcher("admin/update.jsp");
+			}
 			  
 			rd.forward(request, response);//method may be include or forward 
 
@@ -73,8 +82,8 @@ try {
 	    HttpSession session = request.getSession();
 	    session.setAttribute("visit", user.readUserById(id));//guardo los nuevos datos actualizados en el perfil guardado en la sesion
 	    
-	    logger.info("Un usuario ha modificado su perfil.");
-	    response.sendRedirect("ReadReports");
+	    logger.info("Un administrador ha modificado el perfil del usuario ID: "+id);
+	    response.sendRedirect("UpdateAdmin");
 	}
 
 }

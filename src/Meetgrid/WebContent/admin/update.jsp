@@ -30,6 +30,7 @@
 <a name="top"></a>
 
 		<%  HttpServletRequest httpRequest = (HttpServletRequest) request;
+		String deleteURI = httpRequest.getContextPath() + "/DeleteUserAdmin";
 		String updateURI = httpRequest.getContextPath() + "/UpdateAdmin";%>
 
 <!--header y barra de navegacion-->
@@ -45,6 +46,15 @@
               <a class="nav-link" href="ReadReports">Gestionar reportes</a>
             </li>
           <li class="nav-item">
+              <a class="nav-link" href="ReadAll">Todos los usuarios</a>
+           </li>
+           <li class="nav-item">
+              <a class="nav-link" href="CreateUser">Crear usuario</a>
+           </li>
+           <li class="nav-item">
+              <a class="nav-link" href="CreateAdmin">Crear administrador</a>
+           </li>
+           <li class="nav-item">
               <a class="nav-link" href="Logout">Cerrar sesión</a>
            </li>
            </ul>
@@ -53,6 +63,10 @@
           </span>
         </div>
       </nav>
+      
+      
+      
+      <!-- fin del nav -->
 
 <% User u = (User) session.getAttribute("visit"); %>
 
@@ -87,7 +101,7 @@
         <!--MODIFICAR PERFIL-->
         	<h3 class="mt-3">Modificar datos:</h3>
 			
-				<form class= "mt-3 mb-3 rounded border border-dark form-row" action=<%=updateURI %> method="post" id="form">
+				<form class= "mt-3 rounded border border-dark form-row" action=<%=updateURI %> method="post" id="form">
 					<fieldset class="col-12">
 						
 						<label class="mt-3">Contraseña</label>
@@ -192,6 +206,12 @@
 					
 					
 					
+				</form>
+				
+				<form method="post" action=<%=deleteURI %> >
+	
+							<input type="hidden" name="id" value ="<%=u.getId() %>"/>
+							<input class="btn btn-outline-danger col-12 col-m-6 col-lg-6 offset-m-3 offset-lg-3 mt-2 mb-2 " type="submit" onclick="return confirm('¿Desea continuar el borrado de su perfil? Esta acción es irreversible.');" value="Borrar perfil"/>
 				</form>
 				
 	</div>

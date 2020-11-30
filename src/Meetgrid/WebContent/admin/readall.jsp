@@ -65,7 +65,7 @@
 			
 			<input class="btn btn-danger col-lg-2 col-sm-6 col-m-4 offset-m-2" type="submit" value="Ver/Modificar"/>
 	</form>
-      
+      <hr>
  
       <!--grid de perfiles-->
       <div class="row ml-3 mr-3 pt-4 mb-lg-5">

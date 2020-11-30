@@ -79,7 +79,7 @@
 				<input class="form-control" type="password" name="password" id="pass" required onblur="compruebaPass()" placeholder="Puede contener numeros y letras, min 6 max 10 caracteres. Una vez introduzca uno valido se generara el campo para repetir contraseña.">
 				<div id="otravez"></div>
 				
-				<button class="btn btn-danger col-12 mt-2 mb-2" onclick="compruebaTodo()" type="submit" value="register">Registrarse</button>
+				<button class="btn btn-danger col-12 mt-2 mb-2" onclick="compruebaTodo()" type="submit" value="register">Crear administrador</button>
 			</fieldset>
 			
 		</form>

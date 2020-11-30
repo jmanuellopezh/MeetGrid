@@ -169,7 +169,7 @@
 						
 						
 						
-						<button class="btn btn-danger col-12 mt-2 mb-2" onclick="compruebaTodo()" type="submit" value="register">Registrarse</button>
+						<button class="btn btn-danger col-12 mt-2 mb-2" onclick="compruebaTodo()" type="submit" value="register">Crear usuario</button>
 					</fieldset>
 					
 				</form>
